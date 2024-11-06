@@ -1,0 +1,28 @@
+.itemContainer {
+	width: 100%;
+}
+.prevArrow,
+.nextArrow {
+	opacity: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #0000000d;
+	backdrop-filter: blur(1rem);
+	width: 2rem;
+	height: 100%;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transition: all 0.3s ease;
+	z-index: 1;
+	transform: translateY(-50%);
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.nextArrow {
+	right: 0;
+	left: auto;
+}

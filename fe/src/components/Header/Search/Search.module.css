@@ -1,0 +1,12 @@
+.searchInput {
+	width: 100%;
+}
+.searchbox {
+	height: 2.5rem;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 1rem;
+	width: 30%;
+}

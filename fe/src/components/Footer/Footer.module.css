@@ -1,0 +1,59 @@
+.container {
+	width: 100%;
+	height: 25rem;
+	color: white;
+	background-color: #393939;
+	padding: 3rem;
+	user-select: none;
+	display: flex;
+	justify-content: space-around;
+
+	.contact {
+		display: flex;
+		gap: 2rem;
+		flex-direction: column;
+		font-weight: lighter;
+		width: 50%;
+		p {
+			margin-left: 1rem;
+		}
+		p span {
+			font-weight: bold;
+			color: #ff8e51;
+		}
+	}
+	.rightInfo {
+		display: flex;
+		flex-direction: column;
+		width: 50%;
+		justify-content: space-between;
+		align-items: end;
+		.infoContainer {
+			display: flex;
+			width: 100%;
+			gap: 3rem;
+			justify-content: end;
+			.info {
+				h1 {
+					font-size: large;
+					margin-bottom: 0.5rem;
+				}
+				ul li {
+					margin-left: 2rem;
+				}
+				ul li a {
+					font-weight: lighter;
+					color: white;
+				}
+			}
+		}
+		.grBtn {
+			.iconHref{
+				font-size: 2rem;
+			}
+			gap: 1rem;
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+}

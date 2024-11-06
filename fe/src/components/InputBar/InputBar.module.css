@@ -1,0 +1,19 @@
+.container {
+	color: black;
+	background-color: #fff7f7;
+	padding: 0.7rem;
+	border: none;
+	cursor: pointer;
+	min-height: 2.5rem;
+
+	transition: all 0.3s ease;
+
+	&:hover {
+		background-color: #d3cbcb;
+	}
+
+	&:focus {
+		box-shadow: inset 0 0 1rem #e45f17;
+	}
+	outline: none;
+}

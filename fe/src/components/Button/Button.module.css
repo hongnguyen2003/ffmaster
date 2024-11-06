@@ -1,0 +1,45 @@
+.container {
+	color: white;
+	background-color: #ff8e51;
+	padding: 0.7rem 1.2rem;
+	font-weight: bold;
+	min-width: 2.5rem;
+	min-height: 2.5rem;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease;
+	&:hover {
+		background-color: #e45f17;
+	}
+	&:active {
+		filter: blur(0.1rem);
+		background-color: #e45f17b9;
+
+		color: black;
+		transform: scale(0.88);
+	}
+}
+
+.text {
+	background-color: transparent;
+	min-height: 1rem;
+	padding: 0.1rem;
+	justify-content: start;
+	font-weight: unset;
+
+	&:hover {
+		background-color: transparent;
+		color: #e45f17;
+		filter: drop-shadow(0.08rem 0.08rem 0rem #933d0f);
+	}
+	&:active {
+		color: #e45f17;
+		filter: none;
+
+		transform: none;
+	}
+}
