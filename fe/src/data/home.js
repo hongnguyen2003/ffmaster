@@ -1,4 +1,25 @@
-const dataBanner = [
+const sampleDataBanner = [
+    {
+        title: 'Free Fire Account 3',
+        description: 'Low rank, basic skins, and items.',
+        image: `${process.env.PUBLIC_URL}/banner1.jpg`,
+        button: 'new',
+    },
+    {
+        title: 'Free Fire Account 3',
+        description: 'Low rank, basic skins, and items.',
+        image: `${process.env.PUBLIC_URL}/banner2.jpg`,
+        button: 'new',
+    },
+    {
+        title: 'Free Fire Account 3',
+        description: 'Low rank, basic skins, and items.',
+        image: `${process.env.PUBLIC_URL}/banner3.webp`,
+        button: 'new',
+    },
+];
+
+const sampleDataMix = [
     {
         title: 'Free Fire Account 1',
         description: 'High rank, many skins, and rare items.',
@@ -153,6 +174,7 @@ const dataBanner = [
         infoAcc: 'hot',
     }
 ];
+
 const sampleDataVip = [
     {
         title: 'Free Fire Account 1',
@@ -619,4 +641,4 @@ const sampleDataHot = [
     }
 ];
 
-export { dataBanner, sampleDataVip, sampleDataSale, sampleDataHot };
+export { sampleDataBanner, sampleDataMix, sampleDataVip, sampleDataSale, sampleDataHot };

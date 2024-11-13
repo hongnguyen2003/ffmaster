@@ -1,0 +1,98 @@
+.container {
+	position: fixed;
+	top: 0;
+	right: 0;
+	background-color: #ffffff15;
+	width: 100vw;
+	height: 100vh;
+	z-index: 10;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 5rem;
+	backdrop-filter: blur(1rem);
+	.row{
+		width: 60%;
+		height: 60%;
+	}
+	
+}
+
+/* Setup wheel colors */
+.luckywheel {
+	--frame-color: #fff;
+	--win-indicator-color: #fff;
+	--middle-color: #fff;
+	--color-1: #ba4d4e; /* sector 1 color */
+	--color-2: #1592e8; /* sector 2 color */
+	--color-3: #14c187; /* sector 3 color */
+	--color-4: #fc7800; /* sector 4 color */
+	--color-5: #14c187; /* sector 5 color */
+	--color-6: #1592e8; /* sector 6 color */
+	--color-7: #ba4d4e; /* sector 7 color */
+	--color-8: #1592e8; /* sector 8 color */
+	--color-9: #14c187; /* sector 9 color */
+	--color-10: #fc7800; /* sector 10 color */
+	--color-11: #14c187; /* sector 11 color */
+	--color-12: #1592e8; /* sector 12 color */
+}
+
+/* Apply colors to sectors */
+.luckywheel #_1 {
+	fill: var(--color-1);
+}
+.luckywheel #_2 {
+	fill: var(--color-2);
+}
+.luckywheel #_3 {
+	fill: var(--color-3);
+}
+.luckywheel #_4 {
+	fill: var(--color-4);
+}
+.luckywheel #_5 {
+	fill: var(--color-5);
+}
+.luckywheel #_6 {
+	fill: var(--color-6);
+}
+.luckywheel #_7 {
+	fill: var(--color-7);
+}
+.luckywheel #_8 {
+	fill: var(--color-8);
+}
+.luckywheel #_9 {
+	fill: var(--color-9);
+}
+.luckywheel #_10 {
+	fill: var(--color-10);
+}
+.luckywheel #_11 {
+	fill: var(--color-11);
+}
+.luckywheel #_12 {
+	fill: var(--color-12);
+}
+
+.luckywheel .frame,
+.luckywheel .sticks {
+	fill: var(--frame-color);
+}
+
+.luckywheel .winIndicator {
+	fill: var(--win-indicator-color);
+}
+
+.luckywheel .wheelMiddle {
+	fill: var(--middle-color);
+}
+
+/* Body */
+
+.luckywheel {
+	margin: 40px auto;
+	width: 50%;
+	height: 50%;
+}

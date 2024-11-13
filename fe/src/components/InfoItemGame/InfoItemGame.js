@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Button from 'components/Button';
 import PropTypes from 'prop-types';
 import data from 'data/info';
 
@@ -22,12 +21,22 @@ export default function InfoItemGame({ className, ...props }) {
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
+        fade: true,
         draggable: true,
         keyBoardControl: true,
         swipeToSlide: true,
         pauseOnHover: true,
+        appendDots: dots => (
+            <div
+               className={cx('dotsContainer')}
+            >
+                <ul style={{ margin: "0px" }}> {dots} </ul>
+            </div>
+        ),
         customPaging: function (i) {
-            return <button className={cx('dot')}></button>;
+            return <div className={cx('dot')}>
+                <img src={`${process.env.PUBLIC_URL}/acc${i + 1}.jpg`} />
+            </div>;
         },
         dotsClass: cx('slick-custom')
     };
@@ -36,13 +45,24 @@ export default function InfoItemGame({ className, ...props }) {
     };
 
     return (
-        <Slider {...settings}>
-            {data.img.map((item, index) => (
-                <div key={index} className={classes}>
-                    <img src={item} alt={data.title} />
+        <div className={cx('infoAccount')}>
+            <div className={cx('left')}>
+                <Slider className={cx('sliderContaier')} {...settings}>
+                    {data.img.map((item, index) => (
+                        <div key={index} className={classes}>
+                            <img src={item} alt={data.title} />
+                        </div>
+                    ))}
+                </Slider>
+                <div className={cx('info')}>
+                    <h3>{data.title}</h3>
+                    <p>{data.description}</p>
                 </div>
-            ))}
-        </Slider>
+            </div>
+            <div className={cx('right')}>
+
+            </div>
+        </div>
     );
 }
 

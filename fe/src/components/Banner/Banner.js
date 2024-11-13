@@ -39,7 +39,7 @@ export default function Banner({ data, className, ...props }) {
         <Slider {...settings}>
             {data.map((item, index) => (
                 <div key={index} className={classes}>
-                    <img src={item.img} alt={item.title} />
+                    <img src={item.image} alt={item.title} />
                     <div>
                         <h1>{item.title}</h1>
                         <h3>{item.description}</h3>
