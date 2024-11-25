@@ -1,0 +1,55 @@
+form {
+	position: relative;
+	.close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		color: black;
+		background-color: white;
+		&:hover {
+			color: white;
+			background-color: #e81123;
+		}
+	}
+	.btnGr {
+		.regbtn {
+			width: 100%;
+			background-color: #5194ff;
+			&:hover {
+				background-color: #5194ff;
+			}
+		}
+		.other {
+			color: black;
+			background-color: white;
+			&:hover {
+				color: white;
+				background-color: #d5d041;
+			}
+		}
+		display: flex;
+		width: 100%;
+		align-items: stretch;
+	}
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 1rem;
+	padding: 2rem 4rem 3rem 4rem;
+	background-color: #5c5c5c;
+	.row {
+		display: flex;
+		gap: 1rem;
+		.sex {
+			width: 8rem;
+		}
+	}
+}
+
+.show {
+	display: flex;
+}
+
+.hide {
+	display: none;
+}

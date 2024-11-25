@@ -1,3 +1,4 @@
+
 .container {
 	background-color: #ea9d32;
 	padding: 0.7rem;
@@ -30,14 +31,24 @@
 			display: -webkit-box;
 			-webkit-line-clamp: 6;
 			-webkit-box-orient: vertical;
-			margin-bottom: 1rem;
 		}
 		h1 {
+			text-transform: uppercase;
 			font-weight: bolder;
 			font-size: 2rem;
 			color: #ffffff;
 			text-shadow: 0.2rem 0.2rem 0rem rgba(0, 0, 0, 0.5);
 			margin-bottom: 1rem;
+		}
+	}
+}
+.sale {
+	background-color: black;
+	color: white;
+	.info{
+		h1{
+			text-shadow: 0.2rem 0.2rem 0rem #fabb3380;
+
 		}
 	}
 }

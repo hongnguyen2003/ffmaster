@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Button from 'components/Button';
+import Button from 'components/mini.components/Button';
 import PropTypes from 'prop-types';
 
 const cx = classNames.bind(style);

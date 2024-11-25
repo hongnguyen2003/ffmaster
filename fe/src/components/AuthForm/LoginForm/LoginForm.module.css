@@ -1,0 +1,64 @@
+form {
+	position: relative;
+	.close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		color: black;
+		background-color: white;
+		&:hover {
+			color: white;
+			background-color: #e81123;
+		}
+	}
+	.btnGr {
+		.other {
+			color: black;
+			background-color: white;
+			&:hover {
+				color: white;
+				background-color: #5194ff;
+			}
+		}
+		.login {
+			width: 100%;
+		}
+		display: flex;
+		width: 100%;
+		align-items: stretch;
+	}
+
+	display: flex;
+	.passwordWithEye {
+		position: relative;
+		width: 100%;
+		.password {
+			width: 100%;
+			padding-right: 3.8rem;
+		}
+		.eye {
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+	}
+	flex-direction: column;
+	align-items: stretch;
+	gap: 1rem;
+	padding: 1rem 4rem 3rem 4rem;
+	background-color: #5c5c5c;
+}
+.regbtn {
+	color: #175fe4;
+	&:hover {
+		color: #175fe4;
+	}
+}
+
+.show {
+	display: flex;
+}
+
+.hide {
+	display: none;
+}

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { gsap } from 'gsap';
 import { faClover } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useRef, useState } from 'react';
-import Button from 'components/Button';
+import Button from 'components/mini.components/Button';
 const cx = classNames.bind(style);
 
 export default function LuckySpin({ data, className, ...props }) {

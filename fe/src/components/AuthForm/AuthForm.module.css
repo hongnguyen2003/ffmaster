@@ -1,0 +1,15 @@
+.container {
+	position: fixed;
+	top: 0;
+	right: 0;
+	background-color: transparent;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 5rem;
+	z-index: 10;
+	backdrop-filter: blur(1rem);
+}

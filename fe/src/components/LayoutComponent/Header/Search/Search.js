@@ -9,25 +9,31 @@
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types';
 import style from './Search.module.css';
-import Button from 'components/Button';
+import Button from 'components/mini.components/Button';
 import classNames from 'classnames/bind';
-import InputBar from 'components/InputBar';
+import InputBar from 'components/mini.components/InputBar';
 import { useEffect, useRef } from 'react';
 const cx = classNames.bind(style);
 
 export default function Search() {
+
     useEffect(() => {
-        document.addEventListener('keydown', (e) => {
+        const handleKeyDown = (e) => {
             if (e.key === 'Escape') {
                 refSearchInput.current.blur();
             }
-            if (/^[a-zA-Z]$/.test(e.key)) {
-                if (document.activeElement !== refSearchInput.current) {
-                    refSearchInput.current.focus();
-                }
-            }
-        }, [])
-    });
+            // if (/^[a-zA-Z]$/.test(e.key)) {
+            //     if (document.activeElement !== refSearchInput.current) {
+            //         refSearchInput.current.focus();
+
+            //     }
+            // }
+        };
+        document.addEventListener('keydown', handleKeyDown);
+
+
+    }, []);
+
     const refSearchBtn = useRef(null);
     const refSearchInput = useRef(null);
     return (

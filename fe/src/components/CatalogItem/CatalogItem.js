@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import style from './CatalogItem.module.css';
 import classNames from 'classnames/bind';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import Button from 'components/Button';
+import Button from 'components/mini.components/Button';
 import SliderBar from 'components/SliderBar';
 const cx = classNames.bind(style);
 

@@ -1,0 +1,68 @@
+form {
+	position: relative;
+	.close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		color: black;
+		background-color: white;
+		&:hover {
+			color: white;
+			background-color: #e81123;
+		}
+	}
+	.btnGr {
+		.other {
+			color: black;
+			background-color: white;
+			&:hover {
+				color: white;
+				background-color: #ff8e51;
+			}
+		}
+		.regbtn {
+			width: 100%;
+
+			background-color: #5194ff;
+			&:hover {
+				background-color: #5194ff;
+			}
+		}
+		display: flex;
+		width: 100%;
+		align-items: stretch;
+	}
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 1rem;
+	padding: 2rem 4rem 3rem 4rem;
+	background-color: #5c5c5c;
+	.row {
+		display: flex;
+		gap: 1rem;
+		.passwordWithEye {
+			position: relative;
+			width: 100%;
+			.password {
+				padding-right: 3.8rem;
+			}
+			.eye {
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+		}
+		.repassword {
+			width: 100%;
+		}
+	}
+}
+
+.show {
+	display: flex;
+}
+
+.hide {
+	display: none;
+}

@@ -1,5 +1,5 @@
 .container {
-	padding: 0.7rem;
+	/* padding: 0.7rem; */
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -7,15 +7,15 @@
 
 	justify-content: space-around;
 	.itemContainer {
-		padding: 0.7rem;
-		background-color: #0000000d;
+		/* padding: 0.7rem; */
+		/* background-color: #0000000d; */
 
 		width: 100%;
 	}
 	.header {
 		user-select: none;
 		h1 {
-			padding: 1rem;
+			/* padding: 1rem; */
 		}
 		display: flex;
 		width: 100%;
@@ -35,7 +35,7 @@
 .tag_new {
 	.header {
 		h1 {
-			background-color: #e84b4b;
+			/* background-color: #e84b4b; */
 		}
 	}
 }
@@ -43,7 +43,7 @@
 .tag_sale {
 	.header {
 		h1 {
-			background-color: #6ae84b;
+			/* background-color: #6ae84b; */
 		}
 	}
 }
@@ -51,7 +51,7 @@
 .tag_hot {
 	.header {
 		h1 {
-			background-color: #e8a74b;
+			/* background-color: #e84a4a; */
 		}
 	}
 }
@@ -59,7 +59,7 @@
 .tag_vip {
 	.header {
 		h1 {
-			background-color: #e54be8;
+			/* background-color: #e54be8; */
 		}
 	}
 }

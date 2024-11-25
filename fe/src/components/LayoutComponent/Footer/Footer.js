@@ -2,9 +2,9 @@
 
 import style from './Footer.module.css';
 import classNames from 'classnames/bind';
-import Button from 'components/Button';
+import Button from 'components/mini.components/Button';
 import { faFacebook, faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
-import LogoWeb from 'components/LogoWeb';
+import LogoWeb from 'components/mini.components/LogoWeb';
 const cx = classNames.bind(style);
 
 
