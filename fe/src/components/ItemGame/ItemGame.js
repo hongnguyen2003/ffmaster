@@ -6,15 +6,14 @@ import PropTypes from 'prop-types';
 import { faCartPlus, faTag } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import ImageFallBack from 'components/mini.components/ImageFallBack';
+import formatCurrency from 'utils/formatCurrency';
 const cx = classNames.bind(style);
 
 const ItemGame = forwardRef(({ className, data, ...props }, ref) => {
     const classes = cx('container', {
         [className]: className,
     });
-    const formatCurrency = (amount) => {
-        return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    };
+
     const navigator = useNavigate();
 
     const infoAccMap = {

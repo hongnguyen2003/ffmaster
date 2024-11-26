@@ -8,6 +8,8 @@ import ImageFallBack from 'components/mini.components/ImageFallBack';
 import Button from 'components/mini.components/Button';
 import { faCartPlus, faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
+import formatCurrency from 'utils/formatCurrency';
+
 const cx = classNames.bind(style);
 
 export default function InfoItemGame({ className, dataInfo, ...props }) {

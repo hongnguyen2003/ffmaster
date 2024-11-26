@@ -15,9 +15,9 @@ export default function CartBar({ isShow, onClose, className, ...props }) {
     const dispatch = useDispatch();
     useEffect(() => {
         if (isShow) {
-            document.body.style.paddingRight = '25vw';
-        } else{
-            document.body.style.paddingRight = '0';
+            document.getElementById('root').style.paddingRight = '25vw';
+        } else {
+            document.getElementById('root').style.paddingRight = '0';
         }
     }, [isShow]);
     const handleClose = () => {
