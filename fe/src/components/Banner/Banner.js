@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Button from 'components/mini.components/Button';
 import PropTypes from 'prop-types';
+import ImageFallBack from 'components/mini.components/ImageFallBack';
 
 const cx = classNames.bind(style);
 
@@ -32,6 +33,7 @@ export default function Banner({ data, className, ...props }) {
         dotsClass: cx('slick-custom')
     };
     const handleButtonClick = (buttonText) => {
+        window.location.href = '#moreinfo';
         console.log(`Button clicked: ${buttonText}`);
     };
 
@@ -39,7 +41,7 @@ export default function Banner({ data, className, ...props }) {
         <Slider {...settings}>
             {data.map((item, index) => (
                 <div key={index} className={classes}>
-                    <img src={item.image} alt={item.title} />
+                    <ImageFallBack src={item.image} alt={item.title} />
                     <div>
                         <h1>{item.title}</h1>
                         <h3>{item.description}</h3>

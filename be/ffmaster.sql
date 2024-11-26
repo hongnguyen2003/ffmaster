@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 14, 2024 lúc 09:11 AM
+-- Thời gian đã tạo: Th10 26, 2024 lúc 09:56 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -18,8 +18,63 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `lab2nodejs`
+-- Cơ sở dữ liệu: `ffmaster`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `dangky`
+--
+
+CREATE TABLE `dangky` (
+  `id` int(11) NOT NULL,
+  `ten` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `danhgia`
+--
+
+CREATE TABLE `danhgia` (
+  `id` int(11) NOT NULL,
+  `danhgia` tinyint(1) NOT NULL CHECK (`danhgia` between 1 and 5),
+  `idnguoindanhgia` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `donhang`
+--
+
+CREATE TABLE `donhang` (
+  `id` int(11) NOT NULL,
+  `idmonhang` int(11) NOT NULL,
+  `idnguoimua` varchar(255) NOT NULL,
+  `trangthai` enum('wait','paid','done','cancel') NOT NULL DEFAULT 'wait'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `monhang`
+--
+
+CREATE TABLE `monhang` (
+  `id` int(11) NOT NULL,
+  `ten` varchar(255) NOT NULL,
+  `gia` decimal(10,2) NOT NULL,
+  `mota` text DEFAULT NULL,
+  `hinhanh` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`hinhanh`)),
+  `dangky` int(11) DEFAULT 0,
+  `thevocuc` tinyint(1) DEFAULT 0,
+  `soluong` int(11) NOT NULL DEFAULT 1,
+  `nhom` int(11) DEFAULT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -37,47 +92,20 @@ CREATE TABLE `nhom` (
 --
 
 INSERT INTO `nhom` (`idnhom`, `ten`) VALUES
-(1, 'Điện thoại'),
-(2, 'Máy tính bảng'),
-(3, 'Laptop'),
-(4, 'Phụ kiện'),
-(5, 'Âm thanh'),
-(6, 'Máy ảnh'),
-(7, 'TV'),
-(8, 'Đồng hồ thông minh'),
-(9, 'Thiết bị nhà thông minh'),
-(10, 'Đồ gia dụng');
+(1, 'Free Fire');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sanpham`
+-- Cấu trúc bảng cho bảng `thongtin_monhang`
 --
 
-CREATE TABLE `sanpham` (
-  `masp` int(11) NOT NULL,
-  `ten` varchar(255) NOT NULL,
-  `gia` decimal(10,2) NOT NULL,
-  `hinhanh` varchar(255) DEFAULT NULL,
-  `mota` text DEFAULT NULL,
-  `idnhom` int(11) DEFAULT NULL
+CREATE TABLE `thongtin_monhang` (
+  `id` int(11) NOT NULL,
+  `id_monhang` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Đang đổ dữ liệu cho bảng `sanpham`
---
-
-INSERT INTO `sanpham` (`masp`, `ten`, `gia`, `hinhanh`, `mota`, `idnhom`) VALUES
-(1, 'iPhone 14', 25000000.00, 'iphone14.jpg', 'Điện thoại Apple iPhone 14, 128GB', 1),
-(2, 'Samsung Galaxy S23', 21000000.00, 'galaxys23.jpg', 'Điện thoại Samsung Galaxy S23, 128GB', 1),
-(3, 'iPad Pro 11', 22000000.00, 'ipadpro11.jpg', 'Máy tính bảng Apple iPad Pro 11 inch, 128GB', 2),
-(4, 'Surface Pro 8', 30000000.00, 'surfacepro8.jpg', 'Máy tính bảng Microsoft Surface Pro 8, 256GB', 2),
-(5, 'MacBook Air M1', 27000000.00, 'macbookairm1.jpg', 'Laptop Apple MacBook Air với chip M1, 256GB', 3),
-(6, 'Dell XPS 13', 35000000.00, 'dellxps13.jpg', 'Laptop Dell XPS 13, 512GB SSD', 3),
-(7, 'Tai nghe AirPods Pro', 5000000.00, 'airpodspro.jpg', 'Tai nghe không dây Apple AirPods Pro', 4),
-(8, 'Loa JBL Flip 5', 2500000.00, 'jblflip5.jpg', 'Loa Bluetooth JBL Flip 5', 5),
-(9, 'Máy ảnh Canon EOS 90D', 35000000.00, 'canoneos90d.jpg', 'Máy ảnh DSLR Canon EOS 90D', 6),
-(10, 'Samsung Smart TV 55\"', 15000000.00, 'samsungtv55.jpg', 'TV thông minh Samsung 55 inch', 7);
 
 -- --------------------------------------------------------
 
@@ -90,7 +118,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `fullname` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL DEFAULT 'Khác',
-  `sex` enum('Nam','Nữ','Khác') DEFAULT NULL,
+  `sex` enum('Male','Female','Nonbinary') DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `role` enum('USERS','ADMIN') NOT NULL DEFAULT 'USERS'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -100,16 +128,42 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`username`, `password`, `fullname`, `address`, `sex`, `email`, `role`) VALUES
-('admin', '1', 'NGUYEN TRAN HOANG LONG', '753/Tan Phuoc 1', 'Nam', 'chandoralong+admin@gmail.com', 'ADMIN'),
-('user4', '1', 'Phạm Thị Diệudddđ', 'Cần Thơ', 'Khác', 'dieupham@example.com', 'ADMIN'),
-('user8', 'securepass2', 'Nguyễn Thị Hà', 'Vũng Tàu', 'Nữ', 'hannguyen@example.com', 'ADMIN'),
-('x', 'dsadsa', 'êy', '', 'Nam', '', 'USERS'),
-('xa', '2', 'NGUYEN TRAN HOANG LONG', '753/Tan Phuoc 1', 'Khác', 'chandoralong@gmail.com', 'USERS'),
-('xax', '1', 'NGUYEN TRAN HOANG LONG', '753/Tan Phuoc 1', 'Nam', 'chandoralong+1@gmail.com', 'USERS');
+('ejemplo@ejemplo.mx', '$2b$10$XW1YPAMzNKJEzPOfevmFFeYENTPzEpve.W2lLAaYIFFYwMbgjqXAG', 'củ cải muối', 'C. Falsa 445, Piso 2, Apartamento 1, Entre calle Volcán y calle Montes Blancos, cerca de la estación de metro', 'Female', 'caimui@ejemplo.mx', 'USERS'),
+('rurimeiko', '$2b$10$vtRmLf2VVNqu4SIdnxNuMON8IOJbPf1X57v3/mcG67VJbkiA7gYhm', 'NGUYEN TRAN HOANG LONG', '753/Tan Phuoc 1', 'Male', 'chandoralong@gmail.com', 'USERS'),
+('teste@exemplo.us', '$2b$10$U/RqbHMQfFcyg9DM5.SfdO4XXhg9hZNowOCyX.Zxojy9QwthRYLX2', 'João Souza Silva', 'Rua Inexistente, 2000, Andar 2, Apartamento 1', 'Male', 'teste@exemplo.us', 'USERS');
 
 --
 -- Chỉ mục cho các bảng đã đổ
 --
+
+--
+-- Chỉ mục cho bảng `dangky`
+--
+ALTER TABLE `dangky`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `danhgia`
+--
+ALTER TABLE `danhgia`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `danhgia_ibfk_1` (`idnguoindanhgia`);
+
+--
+-- Chỉ mục cho bảng `donhang`
+--
+ALTER TABLE `donhang`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idmonhang` (`idmonhang`),
+  ADD KEY `donhang_ibfk_2` (`idnguoimua`);
+
+--
+-- Chỉ mục cho bảng `monhang`
+--
+ALTER TABLE `monhang`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `monhang_ibfk_1` (`nhom`),
+  ADD KEY `monhang_ibfk_3` (`dangky`);
 
 --
 -- Chỉ mục cho bảng `nhom`
@@ -118,11 +172,11 @@ ALTER TABLE `nhom`
   ADD PRIMARY KEY (`idnhom`);
 
 --
--- Chỉ mục cho bảng `sanpham`
+-- Chỉ mục cho bảng `thongtin_monhang`
 --
-ALTER TABLE `sanpham`
-  ADD PRIMARY KEY (`masp`),
-  ADD KEY `idnhom` (`idnhom`);
+ALTER TABLE `thongtin_monhang`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_monhang` (`id_monhang`);
 
 --
 -- Chỉ mục cho bảng `users`
@@ -136,20 +190,70 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT cho bảng `dangky`
+--
+ALTER TABLE `dangky`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `danhgia`
+--
+ALTER TABLE `danhgia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `donhang`
+--
+ALTER TABLE `donhang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `monhang`
+--
+ALTER TABLE `monhang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT cho bảng `nhom`
 --
 ALTER TABLE `nhom`
   MODIFY `idnhom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT cho bảng `thongtin_monhang`
+--
+ALTER TABLE `thongtin_monhang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Các ràng buộc cho bảng `sanpham`
+-- Các ràng buộc cho bảng `danhgia`
 --
-ALTER TABLE `sanpham`
-  ADD CONSTRAINT `sanpham_ibfk_1` FOREIGN KEY (`idnhom`) REFERENCES `nhom` (`idnhom`);
+ALTER TABLE `danhgia`
+  ADD CONSTRAINT `danhgia_ibfk_1` FOREIGN KEY (`idnguoindanhgia`) REFERENCES `users` (`username`);
+
+--
+-- Các ràng buộc cho bảng `donhang`
+--
+ALTER TABLE `donhang`
+  ADD CONSTRAINT `donhang_ibfk_1` FOREIGN KEY (`idmonhang`) REFERENCES `monhang` (`id`),
+  ADD CONSTRAINT `donhang_ibfk_2` FOREIGN KEY (`idnguoimua`) REFERENCES `users` (`username`);
+
+--
+-- Các ràng buộc cho bảng `monhang`
+--
+ALTER TABLE `monhang`
+  ADD CONSTRAINT `monhang_ibfk_1` FOREIGN KEY (`nhom`) REFERENCES `nhom` (`idnhom`),
+  ADD CONSTRAINT `monhang_ibfk_3` FOREIGN KEY (`dangky`) REFERENCES `dangky` (`id`);
+
+--
+-- Các ràng buộc cho bảng `thongtin_monhang`
+--
+ALTER TABLE `thongtin_monhang`
+  ADD CONSTRAINT `thongtin_monhang_ibfk_1` FOREIGN KEY (`id_monhang`) REFERENCES `monhang` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

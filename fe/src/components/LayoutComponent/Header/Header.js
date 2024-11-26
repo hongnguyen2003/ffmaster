@@ -9,12 +9,14 @@
 import PropTypes from 'prop-types';
 import style from './Header.module.css';
 import classNames from 'classnames/bind';
+import ImageFallBack from 'components/mini.components/ImageFallBack';
 import Search from './Search';
 import Button from 'components/mini.components/Button';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import LogoWeb from 'components/mini.components/LogoWeb';
 import { useDispatch, useSelector } from 'react-redux';
 import { turnForm } from '../../../redux/slices/authSlice';
+import { turnCart } from '../../../redux/slices/cartSlice';
 import { changeFormType } from '../../../redux/slices/authSlice';
 import useAuthCheck from "hooks/CheckLogin";
 import { selectUserInfo, selectIsAuthenticated } from '../../../redux/selectors/authSelectors';
@@ -30,6 +32,10 @@ export default function Header() {
         dispatch(turnForm());
         dispatch(changeFormType(type));
     };
+
+    const handleTurnCart = () => {
+        dispatch(turnCart());
+     };
 
     const handleLogout = async () => {
         await fetch('http://localhost:8080/api/logout', { method: 'GET', credentials: 'include', mode: 'cors' });
@@ -60,9 +66,9 @@ export default function Header() {
                             <Button variab='text' onClick={() => handleClick('REGISTER')} className={cx('authBtn')}>Đăng ký</Button>
                         </div>
                     )}
-                <Button left={true} variab='text' icon={faCartShopping}>Giỏ hàng</Button>
+                <Button left={true} variab='text' icon={faCartShopping} onClick={handleTurnCart}>Giỏ hàng</Button>
             </div>
-            <img className={cx('bg')} src={`${process.env.PUBLIC_URL}/banner1.jpg`} />
+            <ImageFallBack className={cx('bg')} src={`${process.env.PUBLIC_URL}/banner1.jpg`} />
         </header>
 
     )

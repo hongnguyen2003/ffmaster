@@ -4,12 +4,14 @@ import classNames from 'classnames/bind';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import Button from 'components/mini.components/Button';
 import SliderBar from 'components/SliderBar';
+import { useNavigate } from 'react-router-dom';
 const cx = classNames.bind(style);
 
-const CatalogItem = forwardRef(({ className, nameCatalog, tagCatalog, sampleData, ...props }, ref) => {
-    const classes = cx('container', tagCatalog, {
+const CatalogItem = ({ className, nameCatalog, tagCatalog, sampleData, ...props }) => {
+    const classes = cx('container', `tag_${tagCatalog}`, {
         [className]: className,
     });
+    const navigator = useNavigate();
     const settings = {
         dots: false,
         infinite: true,
@@ -29,17 +31,21 @@ const CatalogItem = forwardRef(({ className, nameCatalog, tagCatalog, sampleData
 
 
 
-
     return (
-        <div className={cx(classes)}>
+        <div {...props} className={cx(classes)}>
             <div className={cx('header')}>
                 <h1>{nameCatalog}</h1>
-                <Button className={cx('btnMore')} right={true} variab='text' icon={faChevronRight}>Xem thêm</Button>
+                <Button className={cx('btnMore')}
+                    right={true} variab='text'
+                    icon={faChevronRight}
+                    onClick={() => {
+                        navigator(`/more/${tagCatalog}`)
+                    }}>Xem thêm</Button>
             </div>
             <SliderBar className={cx('itemContainer')} settings={settings} sampleData={sampleData} />
         </div>
     )
-})
+}
 
 
 export default CatalogItem;

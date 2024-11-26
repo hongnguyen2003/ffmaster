@@ -46,7 +46,7 @@ app.use('/src', express.static(path.join(__dirname, 'src')));
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(timeLog);
-app.use(isAuth);
+// app.use(isAuth);
 app.options('*', cors(corsOptions));
 
 
