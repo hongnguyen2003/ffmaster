@@ -7,7 +7,7 @@ const getUsersModel = async () => {
                 role: 'USERS'
             }
         });
-        return user.toJSON();
+        return user;
     } catch (err) {
         console.error('Lỗi khi truy vấn:', err);
         return null;
@@ -107,6 +107,7 @@ const delUserModel = async (id) => {
 
 const getInfoUserModel = async (username) => {
     try {
+        if (!username) return null;
         const user = await User.findOne({
             where: {
                 username: username

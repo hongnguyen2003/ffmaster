@@ -1,0 +1,95 @@
+<script src="/src/js/profile.js"></script>
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header text-center">
+					<h3>Thông tin người dùng</h3>
+				</div>
+				<div class="card-body">
+					<form id="profileform">
+						<div class="mb-3">
+							<label for="username" class="col-form-label">Username:</label>
+							<input
+								type="text"
+								class="form-control"
+								id="username"
+								disabled
+								value="<%= user.username %>"
+							/>
+						</div>
+						<input
+								type="hidden"
+								class="form-control"
+								name="username"
+								value="<%= user.username %>"
+							/>
+						<div class="mb-3">
+							<label for="password" class="col-form-label">Password:</label>
+							<div class="input-group">
+								<input
+									type="password"
+									class="form-control"
+									id="password"
+									name="password"
+									value="<%= user.password %>"
+								/>
+								<button
+									class="btn btn-outline-secondary"
+									type="button"
+									id="togglePassword"
+								>
+									<i class="bi bi-eye-slash" id="togglePasswordIcon"></i>
+								</button>
+							</div>
+						</div>
+						<div class="mb-3">
+							<label for="fullname" class="col-form-label">Full Name:</label>
+							<input
+								type="text"
+								class="form-control"
+								id="fullname"
+								name="fullname"
+								value="<%= user.fullname %>"
+							/>
+						</div>
+						<div class="mb-3">
+							<label for="address" class="col-form-label">Address:</label>
+							<input
+								type="text"
+								class="form-control"
+								id="address"
+								name="address"
+								value="<%= user.address %>"
+							/>
+						</div>
+						<div class="mb-3">
+							<label for="email" class="col-form-label">Email:</label>
+							<input
+								type="email"
+								class="form-control"
+								id="email"
+								name="email"
+								value="<%= user.email %>"
+							/>
+						</div>
+						<div class="mb-3">
+							<label for="sex" class="col-form-label">Sex:</label>
+							<select class="form-control" id="sex" name="sex">
+								<option  value="Nam" <%= user.sex=='Nam'&& 'selected' %> >Nam</option>
+								<option value="Nữ" <%= user.sex=='Nữ'&& 'selected' %> >Nữ</option>
+								<option value="Khác" <%= user.sex=='Khác'&& 'selected' %> >Khác</option>
+							</select>
+						</div>
+						<div class="mb-3 mt-5">
+							<button id="editUser" class="btn btn-primary w-100">Lưu</button>
+						</div>
+						<div class="mb-3">
+							<button id="deleteUser" class="btn btn-danger w-100">Xóa tài khoản</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

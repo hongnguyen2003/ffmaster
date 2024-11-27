@@ -19,7 +19,7 @@ const createJWT = (payload, isRefresh = false) => {
     try {
         token = jwt.sign(payload, key, {
             algorithm: 'HS256',
-            expiresIn: isRefresh ? '30d' : '10m',
+            expiresIn: isRefresh ? '30d' : '10d',
         },);
     } catch (err) { }
 

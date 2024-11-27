@@ -1,0 +1,69 @@
+<script src="/src/js/userManager.js" type="text/javascript"></script>
+
+<div class="container d-flex flex-column justify-content-start vh-80 m-4">
+	<div class="d-flex justify-content-start mb-2">
+		<button
+			class="btn btn-primary"
+			data-mode="new"
+			data-bs-toggle="modal"
+			data-bs-target="#infoModal"
+		>
+			Thêm mới <i class="bi bi-plus-square"></i>
+		</button>
+	</div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">STT</th>
+				<th scope="col">Username</th>
+				<th scope="col">Full Name</th>
+				<th scope="col">Address</th>
+				<th scope="col">Setting</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% for (let i = 0; i < users.length; i++) { %>
+			<tr id="<%=users[i].username%>">
+				<th scope="row"><%=i+1 %></th>
+				<td><%=users[i].username%></td>
+				<td><%=users[i].fullname%></td>
+				<td><%=users[i].address%></td>
+				<td>
+					<div>
+						<button
+							data-id="<%=users[i].username%>"
+							type="button"
+							data-mode="view"
+							class="btn btn-outline-primary viewData"
+							data-bs-toggle="modal"
+							data-bs-target="#infoModal"
+							data-user="<%=JSON.stringify(users[i])%>"
+						>
+							<i data-id="<%=users[i].username%>" class="bi bi-eye"></i>
+						</button>
+						<button
+							data-mode="edit"
+							data-bs-toggle="modal"
+							data-bs-target="#infoModal"
+							data-user="<%=JSON.stringify(users[i])%>"
+							data-id="<%=users[i].username%>"
+							class="btn btn-outline-success editData"
+						>
+							<i data-id="<%=users[i].username%>" class="bi bi-pencil-square"></i>
+						</button>
+						<button
+							data-id="<%=users[i].username%>"
+							data-bs-toggle="modal"
+							data-bs-target="#delModel"
+							class="btn btn-outline-danger delData"
+						>
+							<i data-id="<%=users[i].username%>" class="bi bi-trash"></i>
+						</button>
+					</div>
+				</td>
+			</tr>
+			<% } %>
+		</tbody>
+	</table>
+</div>
+<%- include('components/popupInfo.ejs') -%> <%- include('components/popupComfir.ejs') -%>

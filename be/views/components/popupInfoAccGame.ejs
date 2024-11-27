@@ -1,0 +1,65 @@
+<div
+	class="modal fade"
+	id="infoModal"
+	tabindex="-1"
+	aria-labelledby="infoModalLabel"
+	aria-hidden="true"
+	data-bs-backdrop="static"
+	data-bs-keyboard="false"
+>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="infoModalLabel">New message</h1>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="modal"
+					aria-label="Close"
+				></button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="mb-3">
+						<label for="name" class="col-form-label">Tên:</label>
+						<input type="text" class="form-control" id="name" />
+					</div>
+					<div class="mb-3">
+						<label for="price" class="col-form-label">Giá:</label>
+						<input type="text" class="form-control" id="price" />
+					</div>
+					<div class="mb-3">
+						<label for="mota" class="col-form-label">Mô tả:</label>
+						<textarea type="text" class="form-control" id="mota"></textarea>
+					</div>
+					<div class="mb-3">
+						<input type="checkbox" id="the-vo-cuc" />
+						<label for="the-vo-cuc" class="col-form-label">Thẻ vô cực:</label>
+					</div>
+					<div class="mb-3">
+						<label for="reg" class="col-form-label">Đăng ký:</label>
+						<input type="text" class="form-control" id="reg" />
+					</div>
+					<div class="mb-3">
+						<label for="image" class="col-form-label">Hình ảnh:</label>
+						<div id="image-dropzone" class="dropzone"></div>
+						<div id="image-preview" class="image-preview"></div>
+						<!-- Add this div for image preview -->
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+					Đóng
+				</button>
+				<button type="button" class="btn btn-primary" id="save-btn">Lưu</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+<link
+	href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css"
+	rel="stylesheet"
+	type="text/css"
+/>

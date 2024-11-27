@@ -14,7 +14,7 @@ const loginUser = async (req, res, next) => {
         req.session.user = users;
         console.log(users);
 
-        res.cookie('auth', users.access_token, { httpOnly: true, secure: false });
+        res.cookie('auth', users.access_token, { httpOnly: true, secure: false, maxAge: 30 * 24 * 60 * 60 * 1000 });
 
         return res.status(200).json(users);
     } catch (error) {
@@ -67,13 +67,19 @@ const changePasswordUser = async (req, res, next) => {
 
 const logoutUser = async (req, res) => {
     try {
-        req.session.destroy((err) => {
+        const userInfo = await getInfoUserModel(req?.session?.user?.username);
+
+        req.session.destroy(async (err) => {
             if (err) {
                 console.log(err);
                 return res.status(500).json({ message: "Failed to logout" });
             }
-            res.clearCookie('auth');
-            return res.status(200).json({ message: "ok" });
+            res.clearCookie('auth');            
+            if (userInfo?.role == "ADMIN") {
+
+                return res.redirect('/login');
+            } else
+                return res.status(200).json({ message: "ok" });
         });
     } catch (error) {
         console.log(error);

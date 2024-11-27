@@ -2,7 +2,7 @@ import { verifyToken } from '../utils/jwt.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const isAuth = (req, res, next) => {
+const isAuth = async (req, res, next) => {
     const bypassRoutes = ['/src', '/api/logout', '/api/login', '/api/register', '/api/forgot-password', '/api/reset-password'];
     const token = req.cookies ? req.cookies.auth : null;
     const user = req.session?.user

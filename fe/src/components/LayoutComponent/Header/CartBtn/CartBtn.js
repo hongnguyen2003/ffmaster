@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import Button from 'components/mini.components/Button';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { turnCart } from '../../../../redux/slices/cartSlice';
+import { changeCartType, turnCart } from '../../../../redux/slices/cartSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { selectCartItems } from '../../../../redux/selectors/cartSelectors';
 const cx = classNames.bind(style);
@@ -11,6 +11,7 @@ export default function CartBtn() {
     const dispatch = useDispatch();
     const cartItem = useSelector(selectCartItems);
     const handleTurnCart = () => {
+        dispatch(changeCartType('CART'));
         dispatch(turnCart());
     };
 

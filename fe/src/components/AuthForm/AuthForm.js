@@ -8,6 +8,7 @@ import { selectFormType } from '../../redux/selectors/authSelectors';
 import { changeFormType } from '../../redux/slices/authSlice';
 import InfomationForm from './InfomationForm';
 import ResetPasswordForm from './ResetPasswordForm';
+import PayQR from './PayQR';
 const cx = classNames.bind(style);
 
 export default function AuthForm({ isShow, onClose, className, ...props }) {
@@ -46,6 +47,8 @@ export default function AuthForm({ isShow, onClose, className, ...props }) {
                         return <InfomationForm onClose={handleClose} setFormType={changeFormTypeRedux} />;
                     case "PASSWORD":
                         return <ResetPasswordForm onClose={handleClose} setFormType={changeFormTypeRedux} />;
+                    case "QR":
+                        return <PayQR onClose={handleClose} setFormType={changeFormTypeRedux} />;
                     default:
                         return <LoginForm onClose={handleClose} setFormType={changeFormTypeRedux} />;
                 }

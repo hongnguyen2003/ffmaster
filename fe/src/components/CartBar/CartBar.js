@@ -43,6 +43,7 @@ export default function CartBar({ isShow, onClose, className, ...props }) {
             })()
             }
         </div>
+
     );
 };
 

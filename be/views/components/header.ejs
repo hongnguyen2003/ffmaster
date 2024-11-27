@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="/">Admin FFMaster DashBoard</a>
+		<button
+			class="navbar-toggler"
+			type="button"
+			data-bs-toggle="collapse"
+			data-bs-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown"
+			aria-expanded="false"
+			aria-label="Toggle navigation"
+		>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<% if(user) { %>
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="/">Home</a>
+				</li>
+				<% if(user.role==="ADMIN") {%>
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="/usertable"
+						>Quản lý người dùng</a
+					>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="/account"
+						>Quản lý account</a
+					>
+				</li>
+				<% }%>
+			</ul>
+			<% }%>
+			<div class="d-flex align-items-center ms-auto">
+				<% if (user) { %>
+				<div class="dropdown">
+					<a
+						class="nav-link dropdown-toggle d-flex align-items-center"
+						href="#"
+						id="navbarDropdownMenuLink"
+						role="button"
+						data-bs-toggle="dropdown"
+						aria-expanded="false"
+					>
+						<i class="bi bi-person-circle"></i>
+						<span class="ms-2"><%= user.username %></span>
+					</a>
+					<ul
+						class="dropdown-menu dropdown-menu-end"
+						aria-labelledby="navbarDropdownMenuLink"
+					>
+						<li><a class="dropdown-item" href="/profile">Profile</a></li>
+						<li><hr class="dropdown-divider" /></li>
+						<li><a class="dropdown-item" href="/api/logout">Logout</a></li>
+					</ul>
+				</div>
+				<% } else { %>
+				<a class="btn btn-outline-primary" href="/login">Login</a>
+				<a class="btn btn-outline-secondary ms-2" href="/register">Register</a>
+				<% } %>
+			</div>
+		</div>
+	</div>
+</nav>

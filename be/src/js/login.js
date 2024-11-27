@@ -19,7 +19,7 @@ $(document).ready(function () {
             const decoded = await fetchData.json();
             localStorage.setItem('access_token', decoded.access_token);
             localStorage.setItem('refresh_token', decoded.refresh_token);
-            location.reload();
+            location.href = '/';
          }
         else
             alert('Đăng nhập thất bại');

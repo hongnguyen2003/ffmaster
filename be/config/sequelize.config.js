@@ -147,6 +147,10 @@ const Donhang = sequelize.define('Donhang', {
         autoIncrement: true,
         primaryKey: true,
     },
+    iddonhang: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     idmonhang: {
         type: DataTypes.INTEGER,
         allowNull: false,

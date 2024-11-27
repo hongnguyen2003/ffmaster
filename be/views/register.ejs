@@ -1,0 +1,71 @@
+<script src="/src/js/register.js"></script>
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header text-center">
+					<h3>Register</h3>
+				</div>
+				<div class="card-body">
+					<form id="register-form" >
+						<div class="">
+							<label for="username" class="col-form-label">Username:</label>
+							<input type="text" class="form-control" name="username" id="username" />
+							<div class="invalid-feedback" style="display: block; opacity: 0;" id="username-feedback">Username đã tồn tại.</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label for="password" class="col-form-label">Password:</label>
+								<div class="input-group">
+									<input
+										type="password"
+										class="form-control"
+										name="password"
+										id="password"
+									/>
+									<button
+										class="btn btn-outline-secondary"
+										type="button"
+										id="togglePassword"
+									>
+										<i class="bi bi-eye-slash" id="togglePasswordIcon"></i>
+									</button>
+								</div>
+							</div>
+							<div class="col">
+								<label for="re-password" class="col-form-label">Re-Password:</label>
+								<input type="password" class="form-control" id="re-password" />
+								<div class="invalid-feedback" style="display: block; opacity: 0;" id="re-password-feedback">Mật khẩu không trùng nhau.</div>
+							</div>
+						</div>
+
+						<div class="mb-3">
+							<label for="fullname" class="col-form-label">Full Name:</label>
+							<input type="text" class="form-control" name="fullname" id="fullname" />
+						</div>
+						<div class="mb-3">
+							<label for="address" class="col-form-label">Address:</label>
+							<input type="text" class="form-control" name="address" id="address" />
+						</div>
+						<div class="">
+							<label for="email" class="col-form-label">Email:</label>
+							<input type="email" class="form-control" name="email" id="email" />
+							<div class="invalid-feedback" style="display: block; opacity: 0;" id="email-feedback">Email đã được sử dụng.</div>
+						</div>
+						<div class="mb-3">
+							<label for="sex" class="col-form-label">Sex:</label>
+							<select class="form-control" id="sex" name="sex">
+								<option value="Male">Nam</option>
+								<option value="Female">Nữ</option>
+								<option value="Nonbinary">Khác</option>
+							</select>
+						</div>
+						<div class="mb-3 mt-5">
+							<button type="submit" class="btn btn-primary w-100">Đăng ký</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

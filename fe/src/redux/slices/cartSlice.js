@@ -1,24 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+const saveCartToLocalStorage = (cart) => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+};
+export const getCartFromLocalStorage = () => {
+    return JSON.parse(localStorage.getItem('cart'));
+};
 const initialState = {
-    cart:
-        [
-            // {
-            //     "id": 1,
-            //     "ten": "Free Fire Account 1",
-            //     "gia": "1500000.00",
-            //     "mota": "High rank, many skins, and rare items.",
-            //     "hinhanh": ["acc1.jpg"],
-            //     "dangky": 1,
-            //     "thevocuc": true,
-            //     "soluong": 1,
-            //     "nhom": 1,
-            //     "createdAt": "2024-11-26T09:14:34.000Z"
-            // },
-        ],
+    cart: getCartFromLocalStorage() || [],
     showCart: false,
     type: 'CART',
 };
+
 
 const cartSlice = createSlice({
     name: 'cart',
@@ -26,9 +18,15 @@ const cartSlice = createSlice({
     reducers: {
         addItem: (state, action) => {
             state.cart.push(action.payload);
+            saveCartToLocalStorage(state.cart);
+        },
+        emptyCart: (state) => {
+            state.cart = [];
+            saveCartToLocalStorage([]);
         },
         removeItem: (state, action) => {
             state.cart = state.cart.filter(item => item.id !== action.payload);
+            saveCartToLocalStorage(state.cart);
         },
         turnCart(state) {
             state.showCart = !state.showCart;
@@ -39,5 +37,5 @@ const cartSlice = createSlice({
     },
 });
 
-export const { addItem, removeItem, turnCart, changeCartType } = cartSlice.actions;
+export const { addItem, removeItem, turnCart, changeCartType, emptyCart } = cartSlice.actions;
 export default cartSlice.reducer;

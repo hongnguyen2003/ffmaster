@@ -10,7 +10,7 @@ import RedisStore from "connect-redis"
 import { createClient } from "redis"
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-
+import RouterWeb from './router/webRoute.js';
 // Initialize client.
 let redisClient = createClient()
 redisClient.connect().catch(console.error)
@@ -29,6 +29,9 @@ const sessionConfig = {
     resave: false,
     store: redisStore,
     saveUninitialized: false,
+    cookie: {
+        maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
+    }
 }
 const corsOptions = {
     origin: `http://localhost:${process.env.PORT_FE || 3000}`, // Đảm bảo URL khớp chính xác với client
@@ -52,7 +55,7 @@ app.options('*', cors(corsOptions));
 
 viewEngine(app);
 RouterAPI(app);
-
+RouterWeb(app)
 
 
 const port = process.env.PORT || 8080;

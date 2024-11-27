@@ -44,7 +44,7 @@ const ItemGame = forwardRef(({ className, data, ...props }, ref) => {
             <p>Thẻ vô cực: <span>{data.thevocuc ? "có" : "không"}</span></p>
             <p>{data.mota}</p>
             <h3>Giá: <span>{formatCurrency(data.gia)}</span><span className={cx('currency')}>₫</span></h3>
-            <Button className={cx(itemExists && 'addCart')} right={true} icon={itemExists ? faCartArrowDown : faCartPlus} onClick={handleAddCart}>{itemExists ? 'Thanh toán' : 'Thêm vào giỏ hàng'}</Button>
+            <Button className={cx(itemExists && 'addCart')} right={true} icon={itemExists ? faCartArrowDown : faCartPlus} onClick={handleAddCart}>{itemExists ? 'Thanh toán ngay' : 'Thêm vào giỏ hàng'}</Button>
         </div>
     )
 })
