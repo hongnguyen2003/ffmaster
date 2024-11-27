@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 26, 2024 lúc 09:56 AM
+-- Thời gian đã tạo: Th10 27, 2024 lúc 07:25 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -31,6 +31,14 @@ CREATE TABLE `dangky` (
   `id` int(11) NOT NULL,
   `ten` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `dangky`
+--
+
+INSERT INTO `dangky` (`id`, `ten`) VALUES
+(1, 'FaceBook'),
+(2, 'Google');
 
 -- --------------------------------------------------------
 
@@ -75,6 +83,29 @@ CREATE TABLE `monhang` (
   `nhom` int(11) DEFAULT NULL,
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `monhang`
+--
+
+INSERT INTO `monhang` (`id`, `ten`, `gia`, `mota`, `hinhanh`, `dangky`, `thevocuc`, `soluong`, `nhom`, `createdAt`) VALUES
+(1, 'Free Fire Account 1', 1500000.00, 'High rank, many skins, and rare items.', '[\"acc1.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
+(2, 'Free Fire Account 2', 1000000.00, 'Mid rank, some rare skins, and items. Mid rank, some rare skins, and items Mid rank, some rare skins, and items Mid rank, some rare skins, and items Mid rank, some rare skins, and items', '[\"acc2.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
+(3, 'Free Fire Account 3', 500000.00, 'Low rank, basic skins, and items.', '[\"acc3.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
+(4, 'Free Fire Account 4', 2000000.00, 'High rank, many skins, and rare items.', '[\"acc4.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
+(5, 'Free Fire Account 5', 1200000.00, 'Mid rank, some rare skins, and items.', '[\"acc5.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
+(6, 'Free Fire Account 6', 600000.00, 'Low rank, basic skins, and items.', '[\"acc1.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
+(7, 'Free Fire Account 7', 2500000.00, 'High rank, many skins, and rare items.', '[\"acc2.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
+(8, 'Free Fire Account 8', 1300000.00, 'Mid rank, some rare skins, and items.', '[\"acc3.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
+(9, 'Free Fire Account 9', 700000.00, 'Low rank, basic skins, and items.', '[\"acc4.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
+(10, 'Free Fire Account 10', 3000000.00, 'High rank, many skins, and rare items.', '[\"acc5.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
+(11, 'Free Fire Account 11', 1400000.00, 'Mid rank, some rare skins, and items.', '[\"acc1.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
+(12, 'Free Fire Account 12', 800000.00, 'Low rank, basic skins, and items.', '[\"acc2.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
+(13, 'Free Fire Account 13', 3500000.00, 'High rank, many skins, and rare items.', '[\"acc3.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
+(14, 'Free Fire Account 14', 1500000.00, 'Mid rank, some rare skins, and items.', '[\"acc4.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
+(15, 'Free Fire Account 15', 900000.00, 'Low rank, basic skins, and items.', '[\"acc5.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
+(16, 'Free Fire Account 16', 4000000.00, 'High rank, many skins, and rare items.', '[\"acc1.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
+(17, 'Free Fire Account 17', 1600000.00, 'Mid rank, some rare skins, and items.', '[\"acc2.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34');
 
 -- --------------------------------------------------------
 
@@ -193,7 +224,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `dangky`
 --
 ALTER TABLE `dangky`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `danhgia`
@@ -211,7 +242,7 @@ ALTER TABLE `donhang`
 -- AUTO_INCREMENT cho bảng `monhang`
 --
 ALTER TABLE `monhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `nhom`
