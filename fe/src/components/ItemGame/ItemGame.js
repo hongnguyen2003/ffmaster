@@ -37,7 +37,7 @@ const ItemGame = forwardRef(({ className, data, ...props }, ref) => {
     return (
         <div className={cx(classes)} onClick={(e) => { if (!e.target.closest('button')) navigator(`/info/${data.id}`) }}>
             {data.infoAcc && <div className={cx('tag', `tag_${data.infoAcc}`)}>{infoAccMap[data.infoAcc]}</div>}
-            <ImageFallBack src={data.hinhanh[0]} alt={data.ten} />
+            <ImageFallBack src={'http://localhost:8080' + data.hinhanh[0]} alt={data.ten} />
             <h1>{data.ten}</h1>
             <p>ID: #<span>{data.id}</span></p>
             <p>Đăng ký: <span>{data.dangky}</span></p>

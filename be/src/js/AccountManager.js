@@ -44,7 +44,7 @@ $(document).ready(function () {
         const userInfo = button.data('user');
         const modal = $(this);
         const mode = button.data('mode');
-        id = userInfo.id;
+        id = userInfo?.id || 0;
         readOnly = (mode === 'view');
         modal.find('.modal-body input,.modal-body textarea, .modal-body select').attr('disabled', readOnly);
         modal.find('.modal-footer #save-btn').toggle(mode !== 'view');

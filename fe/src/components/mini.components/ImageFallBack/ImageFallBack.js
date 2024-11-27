@@ -12,6 +12,8 @@ const ImageFallBack = forwardRef(({ className, ...props }, ref) => {
         <img className={cx(classes)} {...props} onError={({ currentTarget }) => {
             currentTarget.onerror = null; // prevents looping
             currentTarget.src = "/placeholder.svg";
+            console.log(props);
+            
         }} />
     );
 });

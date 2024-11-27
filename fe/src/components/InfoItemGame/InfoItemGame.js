@@ -36,7 +36,7 @@ export default function InfoItemGame({ className, dataInfo, ...props }) {
         ),
         customPaging: function (i) {
             return <div className={cx('dot')}>
-                <ImageFallBack src={dataInfo.hinhanh[i]} />
+                <ImageFallBack src={'http://localhost:8080' +dataInfo.hinhanh[i]} />
             </div>;
         },
         dotsClass: cx('slick-custom'),
@@ -66,7 +66,7 @@ export default function InfoItemGame({ className, dataInfo, ...props }) {
                 <Slider className={cx('sliderContaier')} {...settings}>
                     {dataInfo.hinhanh.map((item, index) => (
                         <div key={index} className={classes}>
-                            <ImageFallBack src={item} alt={dataInfo.ten} />
+                            <ImageFallBack src={'http://localhost:8080' +item} alt={dataInfo.ten} />
                         </div>
                     ))}
                 </Slider>

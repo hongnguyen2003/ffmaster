@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 27, 2024 lúc 07:25 AM
+-- Thời gian đã tạo: Th10 27, 2024 lúc 06:57 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -60,6 +60,7 @@ CREATE TABLE `danhgia` (
 
 CREATE TABLE `donhang` (
   `id` int(11) NOT NULL,
+  `iddonhang` varchar(255) NOT NULL,
   `idmonhang` int(11) NOT NULL,
   `idnguoimua` varchar(255) NOT NULL,
   `trangthai` enum('wait','paid','done','cancel') NOT NULL DEFAULT 'wait'
@@ -81,31 +82,18 @@ CREATE TABLE `monhang` (
   `thevocuc` tinyint(1) DEFAULT 0,
   `soluong` int(11) NOT NULL DEFAULT 1,
   `nhom` int(11) DEFAULT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT current_timestamp()
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `monhang`
 --
 
-INSERT INTO `monhang` (`id`, `ten`, `gia`, `mota`, `hinhanh`, `dangky`, `thevocuc`, `soluong`, `nhom`, `createdAt`) VALUES
-(1, 'Free Fire Account 1', 1500000.00, 'High rank, many skins, and rare items.', '[\"acc1.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
-(2, 'Free Fire Account 2', 1000000.00, 'Mid rank, some rare skins, and items. Mid rank, some rare skins, and items Mid rank, some rare skins, and items Mid rank, some rare skins, and items Mid rank, some rare skins, and items', '[\"acc2.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
-(3, 'Free Fire Account 3', 500000.00, 'Low rank, basic skins, and items.', '[\"acc3.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
-(4, 'Free Fire Account 4', 2000000.00, 'High rank, many skins, and rare items.', '[\"acc4.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
-(5, 'Free Fire Account 5', 1200000.00, 'Mid rank, some rare skins, and items.', '[\"acc5.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
-(6, 'Free Fire Account 6', 600000.00, 'Low rank, basic skins, and items.', '[\"acc1.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
-(7, 'Free Fire Account 7', 2500000.00, 'High rank, many skins, and rare items.', '[\"acc2.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
-(8, 'Free Fire Account 8', 1300000.00, 'Mid rank, some rare skins, and items.', '[\"acc3.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
-(9, 'Free Fire Account 9', 700000.00, 'Low rank, basic skins, and items.', '[\"acc4.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
-(10, 'Free Fire Account 10', 3000000.00, 'High rank, many skins, and rare items.', '[\"acc5.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
-(11, 'Free Fire Account 11', 1400000.00, 'Mid rank, some rare skins, and items.', '[\"acc1.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
-(12, 'Free Fire Account 12', 800000.00, 'Low rank, basic skins, and items.', '[\"acc2.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
-(13, 'Free Fire Account 13', 3500000.00, 'High rank, many skins, and rare items.', '[\"acc3.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
-(14, 'Free Fire Account 14', 1500000.00, 'Mid rank, some rare skins, and items.', '[\"acc4.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
-(15, 'Free Fire Account 15', 900000.00, 'Low rank, basic skins, and items.', '[\"acc5.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
-(16, 'Free Fire Account 16', 4000000.00, 'High rank, many skins, and rare items.', '[\"acc1.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34'),
-(17, 'Free Fire Account 17', 1600000.00, 'Mid rank, some rare skins, and items.', '[\"acc2.jpg\"]', 1, 1, 1, 1, '2024-11-26 09:14:34');
+INSERT INTO `monhang` (`id`, `ten`, `gia`, `mota`, `hinhanh`, `dangky`, `thevocuc`, `soluong`, `nhom`, `createdAt`, `status`) VALUES
+(20, 'Acc freefire promax vip 123', 2000000.00, 'Acc vip, full skin, đã nạp 190 triệu', '[\"/src/imgs/7d2cdb85-837d-4abf-8d91-136918678d37.jpg\",\"/src/imgs/05ef689f-153a-48b7-9864-ba1e75541430.jpg\",\"/src/imgs/84cc5a52-61cb-4581-b122-c06f56a08cf6.jpg\"]', 1, 1, 1, 1, '2024-11-27 17:53:24', 0),
+(21, 'Acc lửa chùa miễn phí', 1.00, 'miễn phí cho bạn', '[\"/src/imgs/22574ab9-7581-4e58-97fa-4fa168964f54.jpg\"]', 2, 1, 1, 1, '2024-11-27 17:56:31', 0),
+(22, 'Free fire promax', 2000.00, 'acc mới tạo', '[\"/src/imgs/c6e0eee2-aa93-456f-ac55-d6013d7c7a57.jpg\"]', 1, 0, 1, 1, '2024-11-27 17:57:23', 0);
 
 -- --------------------------------------------------------
 
@@ -159,9 +147,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`username`, `password`, `fullname`, `address`, `sex`, `email`, `role`) VALUES
-('ejemplo@ejemplo.mx', '$2b$10$XW1YPAMzNKJEzPOfevmFFeYENTPzEpve.W2lLAaYIFFYwMbgjqXAG', 'củ cải muối', 'C. Falsa 445, Piso 2, Apartamento 1, Entre calle Volcán y calle Montes Blancos, cerca de la estación de metro', 'Female', 'caimui@ejemplo.mx', 'USERS'),
-('rurimeiko', '$2b$10$vtRmLf2VVNqu4SIdnxNuMON8IOJbPf1X57v3/mcG67VJbkiA7gYhm', 'NGUYEN TRAN HOANG LONG', '753/Tan Phuoc 1', 'Male', 'chandoralong@gmail.com', 'USERS'),
-('teste@exemplo.us', '$2b$10$U/RqbHMQfFcyg9DM5.SfdO4XXhg9hZNowOCyX.Zxojy9QwthRYLX2', 'João Souza Silva', 'Rua Inexistente, 2000, Andar 2, Apartamento 1', 'Male', 'teste@exemplo.us', 'USERS');
+('admin@example.us', '$2b$10$Bm4EoflovL8fYsS4bq5bLud8zZs5fbR8uNcyW39lBHcF19SuYGnkq', 'Jon Stewart Doe', '1600 Fake Street, Apartment 1', 'Nonbinary', 'test@example.us', 'ADMIN');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -236,13 +222,13 @@ ALTER TABLE `danhgia`
 -- AUTO_INCREMENT cho bảng `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT cho bảng `monhang`
 --
 ALTER TABLE `monhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT cho bảng `nhom`
