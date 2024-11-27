@@ -118,7 +118,7 @@ export const createItem = async (req, res, next) => {
 
 export const updateItem = async (req, res, next) => {
     try {
-        const { id, updateData } = req.body;
+        const { id, ...updateData } = req.body;
 
         if (!id || !updateData) {
             return res.status(400).json({ message: "id and updateData parameters are required" });

@@ -22,9 +22,10 @@ const createOrderModel = async (cartItems, username) => {
 };
 
 
-const getListOrderModel = async (username) => {
+const getListOrderModel = async (username, isAdmin) => {
     try {
-        const orders = await Donhang.findAll({ where: { idnguoimua: username } });
+        const query = isAdmin ? {} : { where: { idnguoimua: username } };
+        const orders = await Donhang.findAll(query);
         if (orders.length === 0) return null;
 
         const orderData = orders.map(order => order.toJSON());
@@ -60,7 +61,7 @@ const getListOrderModel = async (username) => {
 
 const updateOrderModel = async (id, updateData) => {
     try {
-        const result = await Donhang.update(updateData, { where: { id } });
+        const result = await Donhang.update(updateData, { where: { iddonhang: id } });
         return result;
     } catch (err) {
         console.error('Error updating order:', err);
@@ -70,12 +71,23 @@ const updateOrderModel = async (id, updateData) => {
 
 const deleteOrderModel = async (id) => {
     try {
-        const result = await Donhang.destroy({ where: { iddonhang: id } });
+        const result = await Donhang.update({ trangthai: 'cancel' }, { where: { iddonhang: id } });
         return result;
     } catch (err) {
-        console.error('Error deleting order:', err);
+        console.error('Error updating order:', err);
         return null;
     }
 };
 
-export { createOrderModel, updateOrderModel, deleteOrderModel, getListOrderModel };
+const doneOrderModel = async (id) => {
+    try {
+        const result = await Donhang.update({ trangthai: 'done' }, { where: { iddonhang: id } });
+        return result;
+    } catch (err) {
+        console.error('Error updating order:', err);
+        return null;
+    }
+
+}
+
+export { createOrderModel, updateOrderModel, deleteOrderModel, getListOrderModel, doneOrderModel };

@@ -1,4 +1,4 @@
-import { createOrderModel, updateOrderModel, deleteOrderModel, getListOrderModel } from '@models/order.model.js';
+import { createOrderModel, updateOrderModel, deleteOrderModel, getListOrderModel, doneOrderModel } from '@models/order.model.js';
 
 export const createOrder = async (req, res, next) => {
     try {
@@ -49,6 +49,21 @@ export const deleteOrder = async (req, res, next) => {
             return res.status(400).json({ message: "id parameter is required" });
         }
         const result = await deleteOrderModel(id);
+        if (result === null) return res.status(500).json({ message: "Error deleting order" });
+        return res.status(200).json({ message: "Order deleted successfully" });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "Error deleting order", ...error });
+    }
+};
+
+export const doneOrder = async (req, res, next) => {
+    try {
+        const { id } = req.body;
+        if (!id) {
+            return res.status(400).json({ message: "id parameter is required" });
+        }
+        const result = await doneOrderModel(id);
         if (result === null) return res.status(500).json({ message: "Error deleting order" });
         return res.status(200).json({ message: "Order deleted successfully" });
     } catch (error) {

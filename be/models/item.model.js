@@ -1,5 +1,5 @@
-import { Nhom, Monhang } from '@config/sequelize.config.js';
-import { Op } from 'sequelize'; // Add this import
+import { Nhom, Monhang, Dangky } from '@config/sequelize.config.js';
+import { Op, where } from 'sequelize'; // Add this import
 
 const parseImageField = (item) => {
     const jsonItem = item.toJSON();
@@ -11,8 +11,18 @@ const parseImageField = (item) => {
 
 const getListGroupsModel = async () => {
     try {
-        const nhom = await Nhom.findAll();
+        const nhom = await Nhom.findAll({ where: { status: 0 } });
         return nhom.map(item => parseImageField(item));
+    } catch (err) {
+        console.error('Lỗi khi truy vấn:', err);
+        return null;
+    }
+};
+
+const getListDangkyModel = async () => {
+    try {
+        const dangky = await Dangky.findAll();
+        return dangky;
     } catch (err) {
         console.error('Lỗi khi truy vấn:', err);
         return null;
@@ -21,7 +31,7 @@ const getListGroupsModel = async () => {
 
 const getListItemsModel = async () => {
     try {
-        const monhangs = await Monhang.findAll();
+        const monhangs = await Monhang.findAll({ where: { status: 0 } });
         return monhangs.map(item => parseImageField(item));
     } catch (err) {
         console.error('Lỗi khi truy vấn:', err);
@@ -33,7 +43,8 @@ const getInfoItemModel = async (id) => {
     try {
         const monhang = await Monhang.findOne({
             where: {
-                id: id
+                id: id,
+                status: 0
             }
         });
         return monhang ? parseImageField(monhang) : null;
@@ -46,6 +57,7 @@ const getInfoItemModel = async (id) => {
 const getNewlyUpdatedItemsModel = async () => {
     try {
         const monhangs = await Monhang.findAll({
+            where: { status: 0 },
             order: [['createdAt', 'DESC']],
             limit: 10
         });
@@ -60,6 +72,7 @@ const getGoodPriceItemsModel = async () => {
     try {
         const monhangs = await Monhang.findAll({
             where: {
+                status: 0,
                 gia: {
                     [Op.lt]: 1000000
                 }
@@ -76,6 +89,7 @@ const getVipItemsModel = async () => {
     try {
         const monhangs = await Monhang.findAll({
             where: {
+                status: 0,
                 thevocuc: true
             }
         });
@@ -89,6 +103,7 @@ const getVipItemsModel = async () => {
 const getHotItemsModel = async () => {
     try {
         const monhangs = await Monhang.findAll({
+            where: { status: 0 },
             order: [['soluong', 'DESC']],
             limit: 10
         });
@@ -103,6 +118,7 @@ const getSaleItemsModel = async () => {
     try {
         const monhangs = await Monhang.findAll({
             where: {
+                status: 0,
                 dangky: {
                     [Op.gt]: 0
                 }
@@ -129,9 +145,11 @@ const updateItemModel = async (id, updateData) => {
 
 const deleteItemModel = async (id) => {
     try {
-        const monhang = await Monhang.destroy({
+        const monhang = await Monhang.update({ status: 1 }, {
             where: { id: id }
         });
+        console.log(monhang);
+        
         return monhang;
     } catch (err) {
         console.error('Lỗi khi xóa:', err);
@@ -141,6 +159,7 @@ const deleteItemModel = async (id) => {
 
 const createItemModel = async (itemData) => {
     try {
+        itemData.nhom = 1;
         const newItem = await Monhang.create(itemData);
         return newItem.toJSON();
     } catch (err) {
@@ -149,4 +168,4 @@ const createItemModel = async (itemData) => {
     }
 };
 
-export { getListGroupsModel, getListItemsModel, getInfoItemModel, getNewlyUpdatedItemsModel, getGoodPriceItemsModel, getVipItemsModel, getHotItemsModel, getSaleItemsModel, createItemModel, updateItemModel, deleteItemModel };
+export { getListDangkyModel, getListGroupsModel, getListItemsModel, getInfoItemModel, getNewlyUpdatedItemsModel, getGoodPriceItemsModel, getVipItemsModel, getHotItemsModel, getSaleItemsModel, createItemModel, updateItemModel, deleteItemModel };

@@ -27,9 +27,26 @@ export default function OrderItem({ item, setCartType, className, onDelete, ...p
         await fetchDeleteOrder();
         dispatch(removeItem(item.iddonhang));
     }
-    const handleClick = () => {
-        dispatch(changeFormType("QR"));
-        dispatch(turnForm());
+    const handleUpdate = async () => {
+        const response = await fetch('http://localhost:8080/api/order/ok',
+            {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify({ id: item.iddonhang })
+            });
+        if (!response.ok) return alert('Lỗi khi hoàn thành đơn hàng, vui lòng reload lại trang và thử lại');
+        onDelete();
+
+        return alert('Đơn hàng đã thành công');
+
+    }
+
+    const handleClick = (e) => {
+        if (!e.target.closest('button') && item.trangthai === 'wait') {
+            dispatch(changeFormType("QR"));
+            dispatch(turnForm());
+        }
     }
     const totalPrice = item.idmonhang.reduce((total, monhang) => total + Math.round(monhang.gia), 0);
     return (
@@ -39,8 +56,8 @@ export default function OrderItem({ item, setCartType, className, onDelete, ...p
                 <div className={cx('price')}>Giá: <span>{formatCurrency(totalPrice)}</span><span className={cx('currency')}>₫</span></div>
                 <div className={cx('price')}>Trạng thái: <span>{item.trangthai}</span></div>
             </div>
-            <Button right icon={faXmark} onClick={handleRemove} />
-            {item.trangthai === 'paid' && <Button right icon={faCheck} onClick={handleRemove} />}
+            {(item.trangthai !== 'done' && item.trangthai !== 'cancel') && <Button right icon={faXmark} onClick={handleRemove} />}
+            {item.trangthai === 'paid' && <Button right icon={faCheck} onClick={handleUpdate} />}
         </div>
     );
 };

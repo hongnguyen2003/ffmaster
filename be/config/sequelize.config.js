@@ -62,6 +62,11 @@ const Monhang = sequelize.define('Monhang', {
         allowNull: false,
         defaultValue: DataTypes.NOW,
     },
+    status: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+    },
 }, {
     tableName: 'monhang',
     timestamps: false,
