@@ -1,4 +1,4 @@
-import { getListDangkyModel } from "../models/item.model";
+import { getListDangkyModel, getListItemsModel } from "../models/item.model";
 import { getInfoUserModel } from "../models/user.model";
 const accountTableController = async (req, res, next) => {
     const items = await getListItemsModel();

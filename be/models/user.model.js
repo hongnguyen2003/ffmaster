@@ -1,4 +1,4 @@
-import { User } from '@config/sequelize.config.js';
+import { User, Donhang } from '@config/sequelize.config.js';
 import bcrypt from 'bcrypt';
 const getUsersModel = async () => {
     try {
@@ -92,7 +92,27 @@ const updateUserModel = async (user) => {
 };
 const delUserModel = async (id) => {
     try {
+        const donhang = await Donhang.destroy({
+            where: {
+                idnguoimua: id
+            }
+        });
         const rows = await User.destroy({
+            where: {
+                username: id
+            }
+        });
+        return [rows, donhang]
+
+    } catch (err) {
+        console.error('Lỗi khi truy vấn:', err);
+        return null;
+    }
+};
+const banUserModel = async (id, status) => {
+    try {
+        const rows = await User.update(
+            { status: status }, {
             where: {
                 username: id
             }
@@ -104,6 +124,7 @@ const delUserModel = async (id) => {
         return null;
     }
 };
+
 
 const getInfoUserModel = async (username) => {
     try {
@@ -124,4 +145,4 @@ const getInfoUserModel = async (username) => {
 };
 
 
-export { getUsersModel, addUserModel, delUserModel, updateUserModel, getInfoUserModel };
+export { getUsersModel, addUserModel, delUserModel, updateUserModel, getInfoUserModel, banUserModel };

@@ -1,4 +1,4 @@
-import { delUserModel, addUserModel, updateUserModel, getInfoUserModel, getUsersModel } from "../../models/user.model";
+import { delUserModel, addUserModel, updateUserModel, getInfoUserModel, getUsersModel, banUserModel } from "../../models/user.model";
 import { logoutUser } from '@controllers/api/Auth';
 const addUser = async (req, res, next) => {
 
@@ -48,6 +48,7 @@ const delUser = async (req, res, next) => {
         return res.status(500).json({ message: "", ...error });
     }
 };
+
 const updateUser = async (req, res, next) => {
 
     try {
@@ -68,6 +69,19 @@ const updateUser = async (req, res, next) => {
     }
 };
 
+const banUser = async (req, res, next) => {
+
+    try {
+        const { username, status } = req.body;
+        const resu = await banUserModel(user);
+        if (resu === null) return res.status(500).json({ message: "Error to update" });
+        return res.status(200).json({ message: resu });
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "", ...error });
+    }
+};
 const getUser = async (req, res, next) => {
     try {
 
@@ -97,4 +111,4 @@ const getListUser = async (req, res, next) => {
     }
 }
 
-export { addUser, delUser, updateUser, getUser, getListUser };
+export { addUser, delUser, updateUser, getUser, getListUser, banUser };
