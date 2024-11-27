@@ -6,10 +6,11 @@ import "slick-carousel/slick/slick-theme.css";
 import PropTypes from 'prop-types';
 import ImageFallBack from 'components/mini.components/ImageFallBack';
 import Button from 'components/mini.components/Button';
-import { faCartPlus, faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faMoneyBillWave, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
 import { addItem } from '../../redux/slices/cartSlice';
-import { useDispatch } from 'react-redux';
+import { selectCartItems } from '../../redux/selectors/cartSelectors';
+import { useDispatch, useSelector } from 'react-redux';
 import formatCurrency from 'utils/formatCurrency';
 
 const cx = classNames.bind(style);
@@ -47,7 +48,15 @@ export default function InfoItemGame({ className, dataInfo, ...props }) {
         }
     };
     const dispatch = useDispatch();
+    const cartItems = useSelector(selectCartItems);
+
+    const itemExists = cartItems.some(item => item.id === dataInfo?.id);
+
     const handleAddCart = () => {
+        if (itemExists) {
+            alert('Item already in cart');
+            return;
+        }
         dispatch(addItem(dataInfo));
     };
     if (!dataInfo) return null;
@@ -74,7 +83,7 @@ export default function InfoItemGame({ className, dataInfo, ...props }) {
                     <h3>Giá: <span>{formatCurrency(dataInfo.gia)}</span><span className={cx('currency')}>₫</span></h3>
                 </div>
                 <div className={cx('row')}>
-                    <Button className={cx('addtocart')} onClick={handleAddCart} right={true} icon={faCartPlus}></Button>
+                    <Button className={cx('addtocart', itemExists && 'added')} onClick={handleAddCart} right={true} icon={itemExists ? faCartArrowDown : faCartPlus} ></Button>
                     <Button className={cx('pay')} right={true} icon={faMoneyBillWave}>Mua ngay</Button>
                 </div>
             </div>

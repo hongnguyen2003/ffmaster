@@ -6,12 +6,22 @@ import InputBar from 'components/mini.components/InputBar';
 import LogoWeb from 'components/mini.components/LogoWeb';
 import { useEffect, useState } from 'react';
 import SellectBar from 'components/mini.components/SellectBar';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCartItems } from '../../../redux/selectors/cartSelectors';
+import CartItem from './CartItem';
 const cx = classNames.bind(style);
 
 export default function Cart({ onClose, setCartType, className, ...props }) {
-
+    const cartItems = useSelector(selectCartItems);
     return (
-        <div>cart nèk</div>
+        <div>
+            <h1>Giỏ hàng</h1>
+            {cartItems.map(item => (
+                <CartItem item={item} />
+            ))}
+            <Button right icon={faXmark} onClick={()=>{}} />
+
+        </div>
     );
 };
 

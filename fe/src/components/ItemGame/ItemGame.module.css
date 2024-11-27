@@ -13,8 +13,10 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
 	&:hover {
 		background-color: #ebebeb;
+
 		img {
 			transform: scale(1.01);
 		}
@@ -49,10 +51,12 @@
 		display: -webkit-box;
 		-webkit-line-clamp: 1;
 		-webkit-box-orient: vertical;
+
 		span {
 			color: #e84b4b;
 			font-weight: bold;
 		}
+
 		.currency {
 			margin-left: 0.1rem;
 			font-size: 0.5rem;
@@ -65,9 +69,11 @@
 		font-weight: 300;
 		overflow: hidden;
 		text-overflow: ellipsis;
+
 		span {
 			font-weight: bold;
 		}
+
 		display: -webkit-box;
 		-webkit-line-clamp: 1;
 		-webkit-box-orient: vertical;
@@ -101,4 +107,13 @@
 
 .tag_vip {
 	background-color: #e54be8;
+}
+
+
+.addCart {
+	background-color: #6ae84b;
+
+	&:hover {
+		background-color: #4be84b;
+	}
 }

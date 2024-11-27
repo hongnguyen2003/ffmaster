@@ -2,38 +2,57 @@
 	display: flex;
 	gap: 1rem;
 	padding: 0 0.8rem 0 0.8rem;
+
 	.left {
 		display: flex;
 		gap: 1rem;
 		width: 100%;
 		flex-direction: column;
+
 		.info {
 			background-color: #ebebeb;
 			padding: 1rem;
 		}
 	}
+
 	.right {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
 		justify-content: space-between;
 		width: 100%;
+
 		.row {
 			display: flex;
 			width: 100%;
 			justify-content: space-between;
+
 			.addtocart {
 				background-color: #393939;
+
 				&:hover {
 					color: white;
 				}
+
 				min-width: 0;
 			}
+
+			.added {
+				background-color: #6ae84b;
+
+				&:hover {
+					color: white;
+				}
+
+				min-width: 0;
+			}
+
 			.pay {
 				width: 100%;
 				min-width: 0;
 			}
 		}
+
 		.infomation {
 			height: 100%;
 
@@ -52,16 +71,19 @@
 				display: -webkit-box;
 				-webkit-line-clamp: 1;
 				-webkit-box-orient: vertical;
+
 				span {
 					color: #e84b4b;
 					font-weight: bold;
 				}
+
 				.currency {
 					margin-left: 0.1rem;
 					font-size: 0.5rem;
 					color: #e84b4b;
 				}
 			}
+
 			p {
 				font-weight: 300;
 				overflow: hidden;
@@ -69,6 +91,7 @@
 				display: -webkit-box;
 				-webkit-line-clamp: 6;
 				-webkit-box-orient: vertical;
+
 				span {
 					font-weight: bold;
 				}
@@ -90,6 +113,7 @@
 	justify-content: center;
 	align-items: center;
 	gap: 3rem;
+
 	img {
 		/* filter: brightness(1); */
 		z-index: -1;
@@ -100,15 +124,18 @@
 		top: 0;
 		left: 0;
 	}
+
 	div {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 1rem;
+
 		h1 {
 			font-size: 3rem;
 			font-weight: 700;
 		}
+
 		h3 {
 			font-weight: 300;
 		}
@@ -121,11 +148,16 @@
 	overflow-y: auto;
 	top: 0;
 	left: 0;
-	scrollbar-width: none; /* Firefox */
+	scrollbar-width: none;
+
+	/* Firefox */
 	&::-webkit-scrollbar {
-		display: none; /* Safari and Chrome */
+		display: none;
+		/* Safari and Chrome */
 	}
+
 	scroll-behavior: smooth;
+
 	ul {
 		margin: 0px;
 		display: flex;
@@ -142,11 +174,13 @@
 		filter: brightness(0.5);
 		transition: all 0.5s ease-in-out;
 		list-style-type: none;
+
 		&:hover {
 			transition: all 0.5s ease-in-out;
 
 			filter: brightness(1);
 		}
+
 		.dot {
 			position: absolute;
 			top: 0;
@@ -156,6 +190,7 @@
 			background-color: transparent;
 			width: 100%;
 			height: 100%;
+
 			img {
 				width: 100%;
 				height: 100%;
@@ -169,7 +204,8 @@
 	background-color: #e45f17;
 	filter: brightness(2);
 	scroll-behavior: smooth;
-	scroll-margin-top: 1rem; /* Adjust as needed */
+	scroll-margin-top: 1rem;
+	/* Adjust as needed */
 }
 
 .dotsContainer {

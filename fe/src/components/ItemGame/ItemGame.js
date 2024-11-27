@@ -3,12 +3,13 @@ import style from './ItemGame.module.css';
 import classNames from 'classnames/bind';
 import Button from 'components/mini.components/Button';
 import PropTypes from 'prop-types';
-import { faCartPlus, faTag } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import ImageFallBack from 'components/mini.components/ImageFallBack';
 import formatCurrency from 'utils/formatCurrency';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../../redux/slices/cartSlice';
+import { selectCartItems } from '../../redux/selectors/cartSelectors';
 const cx = classNames.bind(style);
 
 const ItemGame = forwardRef(({ className, data, ...props }, ref) => {
@@ -18,14 +19,20 @@ const ItemGame = forwardRef(({ className, data, ...props }, ref) => {
 
     const navigator = useNavigate();
     const dispatch = useDispatch();
+    const cartItems = useSelector(selectCartItems);
     const infoAccMap = {
         new: 'Mới',
         vip: 'Vip',
         hot: 'Hot',
         sale: 'Sale'
     };
+    const itemExists = cartItems.some(item => item.id === data.id);
     const handleAddCart = () => {
-        dispatch(addItem(data));
+        if (itemExists) {
+            alert('Item already in cart');
+        } else {
+            dispatch(addItem(data));
+        }
     };
     return (
         <div className={cx(classes)} onClick={(e) => { if (!e.target.closest('button')) navigator(`/info/${data.id}`) }}>
@@ -37,7 +44,7 @@ const ItemGame = forwardRef(({ className, data, ...props }, ref) => {
             <p>Thẻ vô cực: <span>{data.thevocuc ? "có" : "không"}</span></p>
             <p>{data.mota}</p>
             <h3>Giá: <span>{formatCurrency(data.gia)}</span><span className={cx('currency')}>₫</span></h3>
-            <Button right={true} icon={faCartPlus} onClick={handleAddCart}>Thêm vào giỏ hàng</Button>
+            <Button className={cx(itemExists && 'addCart')} right={true} icon={itemExists ? faCartArrowDown : faCartPlus} onClick={handleAddCart}>{itemExists ? 'Thanh toán' : 'Thêm vào giỏ hàng'}</Button>
         </div>
     )
 })
