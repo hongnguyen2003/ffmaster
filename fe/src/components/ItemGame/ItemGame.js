@@ -7,6 +7,8 @@ import { faCartPlus, faTag } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import ImageFallBack from 'components/mini.components/ImageFallBack';
 import formatCurrency from 'utils/formatCurrency';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../redux/slices/cartSlice';
 const cx = classNames.bind(style);
 
 const ItemGame = forwardRef(({ className, data, ...props }, ref) => {
@@ -15,25 +17,27 @@ const ItemGame = forwardRef(({ className, data, ...props }, ref) => {
     });
 
     const navigator = useNavigate();
-
+    const dispatch = useDispatch();
     const infoAccMap = {
         new: 'Mới',
         vip: 'Vip',
         hot: 'Hot',
         sale: 'Sale'
     };
-
+    const handleAddCart = () => {
+        dispatch(addItem(data));
+    };
     return (
-        <div className={cx(classes)} onClick={() => { navigator(`/info/${data.id}`) }}>
+        <div className={cx(classes)} onClick={(e) => { if (!e.target.closest('button')) navigator(`/info/${data.id}`) }}>
             {data.infoAcc && <div className={cx('tag', `tag_${data.infoAcc}`)}>{infoAccMap[data.infoAcc]}</div>}
-            <ImageFallBack src={JSON.parse(data.hinhanh)[0]} alt={data.ten} />
+            <ImageFallBack src={data.hinhanh[0]} alt={data.ten} />
             <h1>{data.ten}</h1>
             <p>ID: #<span>{data.id}</span></p>
             <p>Đăng ký: <span>{data.dangky}</span></p>
             <p>Thẻ vô cực: <span>{data.thevocuc ? "có" : "không"}</span></p>
             <p>{data.mota}</p>
             <h3>Giá: <span>{formatCurrency(data.gia)}</span><span className={cx('currency')}>₫</span></h3>
-            <Button right={true} icon={faCartPlus}>Thêm vào giỏ hàng</Button>
+            <Button right={true} icon={faCartPlus} onClick={handleAddCart}>Thêm vào giỏ hàng</Button>
         </div>
     )
 })

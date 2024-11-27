@@ -1,0 +1,39 @@
+.container {
+	position: relative;
+	&:hover .nummber {
+		color: white;
+	}
+	.cartBtn {
+		svg {
+			font-size: 1.5rem;
+		}
+	}
+	.nummber {
+		color: #ff4545;
+		padding: 0.1rem 0rem;
+		height: 1.3rem;
+		width: 1.3rem;
+		font-size: 0.7rem;
+		border-radius: 100%;
+		position: absolute;
+		top: 0.1rem;
+		text-shadow: 0 0 5px #ffffff, 0 0 10px #ff4545, 0 0 15px #ff4545;
+		animation:  glow 1.5s infinite alternate;
+		transform: rotate(-10deg);
+		transition: all 0.5s ease;
+		left: 0.48rem;
+		font-weight: bolder;
+		line-height: 1;
+		text-align: center;
+		pointer-events: none;
+		/* animation: shake 3s infinite; */
+	}
+}
+@keyframes glow {
+	0% {
+		text-shadow: 0 0 5px #ff4545, 0 0 10px #ff4545, 0 0 15px #ff4545;
+	}
+	100% {
+		text-shadow: 0 0 20px #ff4545, 0 0 30px #ff4545, 0 0 40px #ff4545;
+	}
+}

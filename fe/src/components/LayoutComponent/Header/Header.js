@@ -21,6 +21,7 @@ import { changeFormType } from '../../../redux/slices/authSlice';
 import useAuthCheck from "hooks/CheckLogin";
 import { selectUserInfo, selectIsAuthenticated } from '../../../redux/selectors/authSelectors';
 import { logout } from '../../../redux/slices/authSlice';
+import CartBtn from './CartBtn';
 const cx = classNames.bind(style);
 
 export default function Header() {
@@ -33,9 +34,7 @@ export default function Header() {
         dispatch(changeFormType(type));
     };
 
-    const handleTurnCart = () => {
-        dispatch(turnCart());
-     };
+
 
     const handleLogout = async () => {
         await fetch('http://localhost:8080/api/logout', { method: 'GET', credentials: 'include', mode: 'cors' });
@@ -66,7 +65,7 @@ export default function Header() {
                             <Button variab='text' onClick={() => handleClick('REGISTER')} className={cx('authBtn')}>Đăng ký</Button>
                         </div>
                     )}
-                <Button left={true} variab='text' icon={faCartShopping} onClick={handleTurnCart}>Giỏ hàng</Button>
+                <CartBtn />
             </div>
             <ImageFallBack className={cx('bg')} src={`${process.env.PUBLIC_URL}/banner1.jpg`} />
         </header>

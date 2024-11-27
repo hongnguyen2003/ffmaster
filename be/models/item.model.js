@@ -1,10 +1,18 @@
 import { Nhom, Monhang } from '@config/sequelize.config.js';
 import { Op } from 'sequelize'; // Add this import
 
+const parseImageField = (item) => {
+    const jsonItem = item.toJSON();
+    if (jsonItem.hinhanh) {
+        jsonItem.hinhanh = JSON.parse(jsonItem.hinhanh);
+    }
+    return jsonItem;
+};
+
 const getListGroupsModel = async () => {
     try {
         const nhom = await Nhom.findAll();
-        return nhom.map(item => item.toJSON()); // Modify this line
+        return nhom.map(item => parseImageField(item));
     } catch (err) {
         console.error('Lỗi khi truy vấn:', err);
         return null;
@@ -13,9 +21,8 @@ const getListGroupsModel = async () => {
 
 const getListItemsModel = async () => {
     try {
-        const monhangs = await Monhang.findAll({
-        });
-        return monhangs.map(item => item.toJSON()); // Modify this line
+        const monhangs = await Monhang.findAll();
+        return monhangs.map(item => parseImageField(item));
     } catch (err) {
         console.error('Lỗi khi truy vấn:', err);
         return null;
@@ -29,7 +36,7 @@ const getInfoItemModel = async (id) => {
                 id: id
             }
         });
-        return monhang ? monhang.toJSON() : null; // Modify this line
+        return monhang ? parseImageField(monhang) : null;
     } catch (err) {
         console.error('Lỗi khi truy vấn:', err);
         return null;
@@ -42,7 +49,7 @@ const getNewlyUpdatedItemsModel = async () => {
             order: [['createdAt', 'DESC']],
             limit: 10
         });
-        return monhangs.map(item => item.toJSON()); // Modify this line
+        return monhangs.map(item => parseImageField(item));
     } catch (err) {
         console.error('Lỗi khi truy vấn:', err);
         return null;
@@ -58,7 +65,7 @@ const getGoodPriceItemsModel = async () => {
                 }
             }
         });
-        return monhangs.map(item => item.toJSON()); // Modify this line
+        return monhangs.map(item => parseImageField(item));
     } catch (err) {
         console.error('Lỗi khi truy vấn:', err);
         return null;
@@ -72,7 +79,7 @@ const getVipItemsModel = async () => {
                 thevocuc: true
             }
         });
-        return monhangs.map(item => item.toJSON()); // Modify this line
+        return monhangs.map(item => parseImageField(item));
     } catch (err) {
         console.error('Lỗi khi truy vấn:', err);
         return null;
@@ -85,7 +92,7 @@ const getHotItemsModel = async () => {
             order: [['soluong', 'DESC']],
             limit: 10
         });
-        return monhangs.map(item => item.toJSON()); // Modify this line
+        return monhangs.map(item => parseImageField(item));
     } catch (err) {
         console.error('Lỗi khi truy vấn:', err);
         return null;
@@ -101,7 +108,7 @@ const getSaleItemsModel = async () => {
                 }
             }
         });
-        return monhangs.map(item => item.toJSON()); // Modify this line
+        return monhangs.map(item => parseImageField(item));
     } catch (err) {
         console.error('Lỗi khi truy vấn:', err);
         return null;

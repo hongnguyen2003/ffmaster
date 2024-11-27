@@ -52,15 +52,18 @@ export default function Home() {
 
     return (
         <UserLayout>
-            <Banner data={sampleDataBanner} />
             <div className={cx('container')}>
-                <NewUpdateCatalog sampleData={dataNewlyUpdated} tagCatalog='new' />
-                <NewUpdateCatalog type sampleData={dataGoodPrice} tagCatalog='goodprice' />
-                <CatalogItem nameCatalog='Tài khoản VIP' tagCatalog='vip' sampleData={dataVip} id="moreinfo" />
-                <CatalogItem nameCatalog='Tài khoản HOT' tagCatalog='hot' sampleData={dataHot} />
-                <CatalogItem nameCatalog='Tài khoản SALE' tagCatalog='sale' sampleData={dataSale} />
+                <Banner data={sampleDataBanner} />
+                <div className={cx('mini-container')}>
+                    <NewUpdateCatalog sampleData={dataNewlyUpdated} tagCatalog='new' />
+                    <NewUpdateCatalog type sampleData={dataGoodPrice} tagCatalog='goodprice' />
+                    <CatalogItem nameCatalog='Tài khoản VIP' tagCatalog='vip' sampleData={dataVip} id="moreinfo" />
+                    <CatalogItem nameCatalog='Tài khoản HOT' tagCatalog='hot' sampleData={dataHot} />
+                    <CatalogItem nameCatalog='Tài khoản SALE' tagCatalog='sale' sampleData={dataSale} />
 
+                </div>
             </div>
+
         </UserLayout>
     );
 }

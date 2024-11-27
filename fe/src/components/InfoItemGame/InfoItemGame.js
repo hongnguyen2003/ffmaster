@@ -8,6 +8,8 @@ import ImageFallBack from 'components/mini.components/ImageFallBack';
 import Button from 'components/mini.components/Button';
 import { faCartPlus, faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
+import { addItem } from '../../redux/slices/cartSlice';
+import { useDispatch } from 'react-redux';
 import formatCurrency from 'utils/formatCurrency';
 
 const cx = classNames.bind(style);
@@ -16,7 +18,6 @@ export default function InfoItemGame({ className, dataInfo, ...props }) {
     const classes = cx('container', {
         [className]: className,
     });
-
     const settings = {
         dots: true,
         autoplay: false,
@@ -45,8 +46,9 @@ export default function InfoItemGame({ className, dataInfo, ...props }) {
             }
         }
     };
-    const formatCurrency = (amount) => {
-        return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    const dispatch = useDispatch();
+    const handleAddCart = () => {
+        dispatch(addItem(dataInfo));
     };
     if (!dataInfo) return null;
     return (
@@ -65,13 +67,14 @@ export default function InfoItemGame({ className, dataInfo, ...props }) {
                     <h1>{dataInfo.ten}</h1>
                     <h2>Thông tin chi tiết</h2>
                     <p>ID: #<span>{dataInfo.id}</span></p>
+                    <p>Ngày đăng tải: <span>{new Date(dataInfo.createdAt).toLocaleString()}</span></p>
                     <p>Đăng ký: <span>{dataInfo.dangky}</span></p>
                     <p>Thẻ vô cực: <span>{dataInfo.thevocuc ? "có" : "không"}</span></p>
                     <p>Mô tả: <span>{dataInfo.mota}</span></p>
                     <h3>Giá: <span>{formatCurrency(dataInfo.gia)}</span><span className={cx('currency')}>₫</span></h3>
                 </div>
                 <div className={cx('row')}>
-                    <Button className={cx('addtocart')} right={true} icon={faCartPlus}></Button>
+                    <Button className={cx('addtocart')} onClick={handleAddCart} right={true} icon={faCartPlus}></Button>
                     <Button className={cx('pay')} right={true} icon={faMoneyBillWave}>Mua ngay</Button>
                 </div>
             </div>

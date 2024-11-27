@@ -12,6 +12,7 @@
 	align-items: center;
 	justify-content: center;
 	transition: all 0.3s ease;
+
 	&:hover {
 		background-color: #e45f17;
 	}

@@ -17,9 +17,7 @@ export default function Info() {
                 const randomTag = tags[Math.floor(Math.random() * tags.length)];
                 return { ...item, infoAcc: randomTag }
             });
-        } else {
-            data.hinhanh = JSON.parse(data.hinhanh);
-        }
+        };
         return data;
     };
 
