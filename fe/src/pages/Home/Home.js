@@ -57,9 +57,9 @@ export default function Home() {
                 <div className={cx('mini-container')}>
                     <NewUpdateCatalog sampleData={dataNewlyUpdated} tagCatalog='new' />
                     <NewUpdateCatalog type sampleData={dataGoodPrice} tagCatalog='goodprice' />
-                    <CatalogItem nameCatalog='Tài khoản VIP' tagCatalog='vip' sampleData={dataVip} id="moreinfo" />
-                    <CatalogItem nameCatalog='Tài khoản HOT' tagCatalog='hot' sampleData={dataHot} />
-                    <CatalogItem nameCatalog='Tài khoản SALE' tagCatalog='sale' sampleData={dataSale} />
+                    <CatalogItem nameCatalog='Son màu lạnh' tagCatalog='vip' sampleData={dataVip} id="moreinfo" />
+                    <CatalogItem nameCatalog='Son được mua nhiều' tagCatalog='hot' sampleData={dataHot} />
+                    <CatalogItem nameCatalog='Son giá hạt dẻ' tagCatalog='sale' sampleData={dataSale} />
 
                 </div>
             </div>

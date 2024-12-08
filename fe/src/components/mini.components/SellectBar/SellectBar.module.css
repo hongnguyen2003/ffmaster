@@ -19,7 +19,7 @@
 	&:focus {
 		background-color: #d3cbcb;
 
-		border-left: 0.5rem solid #e45f17;
+		border-left: 0.5rem solid #ffa1b0;
 	}
 	outline: none;
 	&:disabled {
@@ -63,7 +63,7 @@
 	}
 
 	.selected {
-		border-right: 0.4rem solid #e45f17;
+		border-right: 0.4rem solid #ffa1b0;
 		background-color: #e3dddd;
 		font-weight: bold;
 	}

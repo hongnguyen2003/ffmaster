@@ -21,11 +21,11 @@
 		width: 100%;
 		justify-content: space-between;
 		.btnMore {
-			color: #e45f17;
+			color: #ffa1b0;
 			text-decoration: underline;
 			&:hover {
 				background-color: transparent;
-				color: #e45f17;
+				color: #ffa1b0;
 				/* filter: none; */
 			}
 		}

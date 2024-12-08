@@ -6,12 +6,15 @@ import "slick-carousel/slick/slick-theme.css";
 import PropTypes from 'prop-types';
 import ImageFallBack from 'components/mini.components/ImageFallBack';
 import Button from 'components/mini.components/Button';
-import { faCartPlus, faMoneyBillWave, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faMoneyBillWave, faCartArrowDown, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
 import { addItem } from '../../redux/slices/cartSlice';
 import { selectCartItems } from '../../redux/selectors/cartSelectors';
 import { useDispatch, useSelector } from 'react-redux';
 import formatCurrency from 'utils/formatCurrency';
+import InputBar from 'components/mini.components/InputBar';
+import SellectBar from 'components/mini.components/SellectBar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const cx = classNames.bind(style);
 
@@ -36,7 +39,7 @@ export default function InfoItemGame({ className, dataInfo, ...props }) {
         ),
         customPaging: function (i) {
             return <div className={cx('dot')}>
-                <ImageFallBack src={'http://localhost:8080' +dataInfo.hinhanh[i]} />
+                <ImageFallBack src={'http://localhost:8080' + dataInfo.hinhanh[i]} />
             </div>;
         },
         dotsClass: cx('slick-custom'),
@@ -66,7 +69,7 @@ export default function InfoItemGame({ className, dataInfo, ...props }) {
                 <Slider className={cx('sliderContaier')} {...settings}>
                     {dataInfo.hinhanh.map((item, index) => (
                         <div key={index} className={classes}>
-                            <ImageFallBack src={'http://localhost:8080' +item} alt={dataInfo.ten} />
+                            <ImageFallBack src={'http://localhost:8080' + item} alt={dataInfo.ten} />
                         </div>
                     ))}
                 </Slider>
@@ -77,10 +80,19 @@ export default function InfoItemGame({ className, dataInfo, ...props }) {
                     <h2>Thông tin chi tiết</h2>
                     <p>ID: #<span>{dataInfo.id}</span></p>
                     <p>Ngày đăng tải: <span>{new Date(dataInfo.createdAt).toLocaleString()}</span></p>
-                    <p>Đăng ký: <span>{dataInfo.dangky}</span></p>
-                    <p>Thẻ vô cực: <span>{dataInfo.thevocuc ? "có" : "không"}</span></p>
+                    <p>Nhãn hiệu: <span>{dataInfo.dangky}</span></p>
+                    <p>Số lượng: <span>{dataInfo.soluong}</span></p>
+                    <p>Màu: <span>{dataInfo.thevocuc ? "Đỏ" : "Hồng"}</span></p>
                     <p>Mô tả: <span>{dataInfo.mota}</span></p>
                     <h3>Giá: <span>{formatCurrency(dataInfo.gia)}</span><span className={cx('currency')}>₫</span></h3>
+                </div>
+                <div className={cx('typeinput')}>
+                    <SellectBar options={[{ label: "Đỏ", value: 'red' }]} onChange={() => { }} planeHoleder='Chọn một màu sắc' ></SellectBar>
+                    <div className={cx('inputnumber')}>
+                        <FontAwesomeIcon icon={faPlus} className={cx('input')} />
+                        <InputBar className={cx('inputtextbox')} placeholder='1' type='number'></InputBar>
+                        <FontAwesomeIcon icon={faMinus}  className={cx('input')} />
+                    </div>
                 </div>
                 <div className={cx('row')}>
                     <Button className={cx('addtocart', itemExists && 'added')} onClick={handleAddCart} right={true} icon={itemExists ? faCartArrowDown : faCartPlus} ></Button>

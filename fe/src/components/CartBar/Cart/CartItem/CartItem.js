@@ -16,11 +16,12 @@ export default function CartItem({ item, setCartType, className, ...props }) {
     return (
         <div className={cx('container')}>
             <div className={cx('image')}>
-                <img src={item.hinhanh[0]} alt={item.ten} />
+                <img src={'http://localhost:8080' +item.hinhanh[0]} alt={item.ten} />
             </div>
             <div className={cx('info')}>
                 <div className={cx('name')}>{item.ten}</div>
                 <div className={cx('price')}>Giá: <span>{formatCurrency(item.gia)}</span><span className={cx('currency')}>₫</span></div>
+                <div className={cx('màu')}>Màu: Đỏ</div>
             </div>
             <div className={cx('soluong')}>x{item.soluong}</div>
             <Button right icon={faXmark} onClick={handleRemove} />

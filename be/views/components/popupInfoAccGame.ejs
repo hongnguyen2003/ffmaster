@@ -7,7 +7,6 @@
 	data-bs-backdrop="static"
 	data-bs-keyboard="false"
 >
-
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -25,9 +24,15 @@
 						<label for="ten" class="col-form-label">Tên:</label>
 						<input type="text" class="form-control" id="ten" />
 					</div>
-					<div class="mb-3">
-						<label for="price" class="col-form-label">Giá:</label>
-						<input type="number" class="form-control" id="price" />
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="price" class="col-form-label">Giá:</label>
+							<input type="number" class="form-control" id="price" />
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="number" class="col-form-label">Số lượng:</label>
+							<input type="number" class="form-control" id="number" />
+						</div>
 					</div>
 					<div class="mb-3">
 						<label for="mota" class="col-form-label">Mô tả:</label>
@@ -35,14 +40,14 @@
 					</div>
 					<div class="row">
 						<div class="col-md-6 mb-3">
-							<label for="the-vo-cuc" class="col-form-label">Thẻ vô cực:</label>
+							<label for="the-vo-cuc" class="col-form-label">Màu:</label>
 							<select class="form-control" id="the-vo-cu">
 								<option value="true">Có</option>
 								<option value="false">Không</option>
 							</select>
 						</div>
 						<div class="col-md-6 mb-3">
-							<label for="reg" class="col-form-label">Đăng ký:</label>
+							<label for="reg" class="col-form-label">Nhãn hiệu:</label>
 							<select class="form-control" id="reg">
 								<% dangky.forEach(function(item) { %>
 								<option value="<%= item.id %>"><%= item.ten %></option>

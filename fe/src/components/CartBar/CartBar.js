@@ -6,6 +6,7 @@ import { sellectCartType } from '../../redux/selectors/cartSelectors';
 import { changeCartType } from '../../redux/slices/cartSlice';
 import Cart from './Cart';
 import Pay from './Pay';
+import Info from './Info';
 const cx = classNames.bind(style);
 
 export default function CartBar({ isShow, onClose, className, ...props }) {
@@ -34,6 +35,8 @@ export default function CartBar({ isShow, onClose, className, ...props }) {
                 switch (typeForm) {
                     case "CART":
                         return <Cart onClose={handleClose} setCartType={changeCartTypeRedux} />;
+                    case "INFO":
+                        return <Info onClose={handleClose} setCartType={changeCartTypeRedux} />;
                     case "PAY":
                         return <Pay onClose={handleClose} setCartType={changeCartTypeRedux} />;
                     default:

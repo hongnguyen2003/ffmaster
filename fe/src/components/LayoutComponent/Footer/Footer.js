@@ -14,9 +14,9 @@ export default function Footer({ }) {
             <div className={cx('contact')}>
                 <LogoWeb big={true} customText="About Us" />
                 <p>
-                    <span>FireKing.VN</span> là một dự án thuộc sự quản lý của <a href='https://wtfdev.xyz/' target='_blank'>WTF Dev</a>. Đề cao tiêu chí chất lượng và tốc độ, chúng tôi luôn nỗ lực để tạo ra những trải nghiệm game tuyệt vời nhất dành cho khách hàng.
+                    <span>BeautyShop.VN</span> là một dự án thuộc sự quản lý của <a href='https://wtfdev.xyz/' target='_blank'>WTF Dev</a>. Đề cao tiêu chí chất lượng và tốc độ, chúng tôi luôn nỗ lực để tạo ra những trải nghiệm game tuyệt vời nhất dành cho khách hàng.
                     <br />
-                    Mọi tài khoản games tại <span>FireKing</span> đều sẽ được hệ thống chuyển giao ngay lập tức tới khách hàng sau khi thanh toán nhằm đảm bảo khách hàng của chúng tôi sẽ không phải chờ đợi lâu để bắt đầu hành trình trải nghiệm game của mình.
+                    Mọi tài khoản games tại <span>BeautyShop</span> đều sẽ được hệ thống chuyển giao ngay lập tức tới khách hàng sau khi thanh toán nhằm đảm bảo khách hàng của chúng tôi sẽ không phải chờ đợi lâu để bắt đầu hành trình trải nghiệm game của mình.
                     <br />
                     Hotline: <a href='tel:0123.456.789'>0123.456.789</a>
                 </p>

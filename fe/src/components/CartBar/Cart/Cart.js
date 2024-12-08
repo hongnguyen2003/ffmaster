@@ -36,7 +36,7 @@ export default function Cart({ onClose, setCartType, className, ...props }) {
                 alert('Đã có lỗi xảy ra, vui lòng thử lại sau');
                 return false;
             }
-            alert('Đặt hàng thành công');
+            // alert('Đặt hàng thành công');
             return true;
         } catch (error) {
             return false;
@@ -53,7 +53,7 @@ export default function Cart({ onClose, setCartType, className, ...props }) {
             const data = await handleNewOrder();
             if (data) {
                 dispas(emptyCart());
-                setCartType('PAY');
+                setCartType('INFO');
             }
         }
     };

@@ -12,10 +12,10 @@ const LogoWeb = forwardRef(({ className, big, customText, ...props }, ref) => {
 
     return (
         <Link to='/' className={classes}>
-            <ImageFallBack src={`${process.env.PUBLIC_URL}/logo.svg`} alt='Logo'></ImageFallBack>
+            <ImageFallBack src={`${process.env.PUBLIC_URL}/logomx.svg`} alt='Logo'></ImageFallBack>
             <div>
-                <h3>FIREKING</h3>
-                {customText ? <h6>{customText}</h6> : <h6>Mua bán acc game</h6>}
+                <h3>BEAUTY SHOP</h3>
+                {customText ? <h6>{customText}</h6> : <h6>Mua bán son</h6>}
             </div>
         </Link>
 

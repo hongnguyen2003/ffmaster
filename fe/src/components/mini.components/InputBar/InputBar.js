@@ -8,7 +8,7 @@ const InputBar = forwardRef(({ className, ...props }, ref) => {
         [className]: className,
     });
     return (
-        <input ref={ref} className={cx(classes)} {...props}></input>
+        <input ref={ref}  className={cx(classes)} {...props}></input>
 
     )
 })

@@ -65,7 +65,7 @@
 }
 
 .slick-custom li:global(.slick-active) {
-	background-color: #e45f17;
+	background-color: #ffa1b0;
 	width: 3rem;
 	.dot {
 		width: 3rem;

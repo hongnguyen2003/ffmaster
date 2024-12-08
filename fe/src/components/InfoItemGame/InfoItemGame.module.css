@@ -21,7 +21,21 @@
 		gap: 1rem;
 		justify-content: space-between;
 		width: 100%;
-
+		.typeinput {
+			display: flex;
+			gap: 1rem;
+			.inputnumber{
+				.inputtextbox{
+					text-align: center;
+				}
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				.input{
+					cursor: pointer;
+				}
+			}
+		}
 		.row {
 			display: flex;
 			width: 100%;
@@ -201,7 +215,7 @@
 }
 
 .slick-custom li:global(.slick-active) {
-	background-color: #e45f17;
+	background-color: #ffa1b0;
 	filter: brightness(2);
 	scroll-behavior: smooth;
 	scroll-margin-top: 1rem;
@@ -209,6 +223,6 @@
 }
 
 .dotsContainer {
-	background-color: #e45f17;
+	background-color: #ffa1b0;
 	padding: 2rem;
 }

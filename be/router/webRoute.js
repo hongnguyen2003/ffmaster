@@ -21,7 +21,7 @@ const RouterWeb = (app) => {
 
     router.get('/usertable', isAuth, isAdmin, userTableController);
 
-    router.get('/account', isAuth, isAdmin, accountTableController);
+    router.get('/itemtable', isAuth, isAdmin, accountTableController);
 
     router.get('/profile', profileController);
 

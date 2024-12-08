@@ -53,7 +53,7 @@ $(document).ready(function () {
         if (mode === 'new') {
             modal.find('.modal-body input, .modal-body select').val("");
             modal.find('.modal-footer #save-btn').data('mode', 'new').text('Thêm');
-            modal.find('.modal-title').text('Thêm tài khoản game mới');
+            modal.find('.modal-title').text('Thêm sản phẩm mới');
         } else {
             IMGARR = userInfo.hinhanh;
             modal.find('.modal-body #ten').val(userInfo.ten);

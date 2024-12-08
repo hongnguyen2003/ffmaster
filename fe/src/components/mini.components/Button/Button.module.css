@@ -1,6 +1,6 @@
 .container {
 	color: white;
-	background-color: #ff8e51;
+	background-color: #ffa1b0;
 	padding: 0.7rem 1.2rem;
 	font-weight: bold;
 	min-width: 2.5rem;
@@ -14,11 +14,11 @@
 	transition: all 0.3s ease;
 
 	&:hover {
-		background-color: #e45f17;
+		background-color: #e9527a;
 	}
 	&:active {
 		filter: blur(0.1rem);
-		background-color: #e45f17b9;
+		background-color: #cb4669;
 
 		color: black;
 		transform: scale(0.88);
@@ -33,13 +33,13 @@
 	font-weight: unset;
 	&:hover {
 		background-color: transparent;
-		color: #e45f17;
+		color: #ffa1b0;
 		text-decoration: wavy;
 
 		/* filter: drop-shadow(0.08rem 0.08rem 0rem #933d0f); */
 	}
 	&:active {
-		color: #e45f17;
+		color: #ffa1b0;
 		filter: none;
 		transform: none;
 	}

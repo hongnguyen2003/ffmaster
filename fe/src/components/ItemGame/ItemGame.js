@@ -40,8 +40,8 @@ const ItemGame = forwardRef(({ className, data, ...props }, ref) => {
             <ImageFallBack src={'http://localhost:8080' + data.hinhanh[0]} alt={data.ten} />
             <h1>{data.ten}</h1>
             <p>ID: #<span>{data.id}</span></p>
-            <p>Đăng ký: <span>{data.dangky}</span></p>
-            <p>Thẻ vô cực: <span>{data.thevocuc ? "có" : "không"}</span></p>
+            <p>Nhãn hiệu: <span>{data.dangky}</span></p>
+            <p>Màu: <span>{data.thevocuc ? "Đỏ" : "Hồng"}</span></p>
             <p>{data.mota}</p>
             <h3>Giá: <span>{formatCurrency(data.gia)}</span><span className={cx('currency')}>₫</span></h3>
             <Button className={cx(itemExists && 'addCart')} right={true} icon={itemExists ? faCartArrowDown : faCartPlus} onClick={handleAddCart}>{itemExists ? 'Thanh toán ngay' : 'Thêm vào giỏ hàng'}</Button>

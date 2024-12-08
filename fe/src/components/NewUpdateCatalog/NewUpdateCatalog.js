@@ -33,15 +33,16 @@ const NewUpdateCatalog = forwardRef(({ sampleData, className, tagCatalog, type, 
     return (
         <div className={cx(classes)}>
             <div className={cx('info')}>
-                <h1>{type ? "Giá tốt" : "Vừa mới cập nhật"}</h1>
-                <p>Danh sách tất cả các tài khoản {type ? "đang giảm giá" : "mới nhất được"} được cập nhật hàng giờ/ngày tại FireKing. Thông tin tài khoản đều được hệ thống tự động gửi trực tiếp tới email của khách hàng ngay lập tức khi thanh toán. Chúng tôi cam kết cung cấp các tài khoản chất lượng cao với giá cả hợp lý và dịch vụ hỗ trợ khách hàng tận tình.</p>
-                <p>Hãy nhanh tay sở hữu những tài khoản giảm giá với mức giá ưu đãi nhất!</p>
+                <h1>{type ? "Son khuyến mãi" : "Son mới cập nhật"}</h1>
+                <p>Danh sách tất cả các dòng son {type ? "đang giảm giá" : "mới nhất"} được cập nhật hàng ngày tại BeautyKing. Chất lượng son môi đảm bảo an toàn, màu sắc chuẩn và được giao tận tay khách hàng nhanh chóng ngay sau khi đặt hàng.</p>
+                <p>Đừng bỏ lỡ cơ hội sở hữu những thỏi son tuyệt đẹp với mức giá ưu đãi nhất!</p>
                 <Button className={!type && cx('viewAll')} right={true} icon={faChevronRight} onClick={() => {
                     navigator(`/more/${tagCatalog}`);
                 }}>Khám phá thêm</Button>
             </div>
             <SliderBar className={cx('itemContainer')} settings={settings} sampleData={sampleData} />
         </div>
+
     )
 })
 

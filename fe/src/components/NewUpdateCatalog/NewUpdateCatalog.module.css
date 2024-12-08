@@ -1,6 +1,6 @@
 
 .container {
-	background-color: #ea9d32;
+	background-color: #ffa1b0;
 	padding: 0.7rem;
 	width: 100%;
 	display: flex;
@@ -47,7 +47,7 @@
 	color: white;
 	.info{
 		h1{
-			text-shadow: 0.2rem 0.2rem 0rem #fabb3380;
+			text-shadow: 0.2rem 0.2rem 0rem #ffa1b0;
 
 		}
 	}

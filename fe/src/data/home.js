@@ -1,23 +1,25 @@
 const sampleDataBanner = [
     {
-        title: 'Đỉnh cao tài khoản Free Fire',
-        description: 'Khám phá những tài khoản chất lượng, phù hợp mọi nhu cầu của bạn tại FireKing.',
+        title: 'Sắc màu đẳng cấp',
+        description: 'Khám phá những dòng son cao cấp, tôn lên vẻ đẹp rạng ngời của bạn.',
         image: `${process.env.PUBLIC_URL}/banner1.jpg`,
         button: 'Khám phá ngay',
     },
     {
-        title: 'An toàn và nhanh chóng',
-        description: 'Đảm bảo giao dịch an toàn, hỗ trợ nhanh chóng để bạn yên tâm trải nghiệm.',
+        title: 'Chất lượng hàng đầu',
+        description: 'Son môi an toàn, lên màu chuẩn, đồng hành cùng bạn mọi lúc, mọi nơi.',
         image: `${process.env.PUBLIC_URL}/banner2.jpg`,
         button: 'Tìm hiểu thêm',
     },
     {
-        title: 'Sẵn sàng chinh phục',
-        description: 'Tài khoản với trang bị tối ưu, giúp bạn tỏa sáng trong mọi trận đấu.',
-        image: `${process.env.PUBLIC_URL}/banner3.webp`,
+        title: 'Tỏa sáng phong cách',
+        description: 'Đa dạng sắc màu, giúp bạn tự tin chinh phục mọi ánh nhìn.',
+        image: `${process.env.PUBLIC_URL}/banner3.jpg`,
         button: 'Mua ngay',
     },
 ];
+
+
 
 
 export { sampleDataBanner };
