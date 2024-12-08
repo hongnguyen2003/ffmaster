@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 27, 2024 lúc 06:57 PM
+-- Thời gian đã tạo: Th12 08, 2024 lúc 09:41 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -37,8 +37,8 @@ CREATE TABLE `dangky` (
 --
 
 INSERT INTO `dangky` (`id`, `ten`) VALUES
-(1, 'FaceBook'),
-(2, 'Google');
+(1, 'YSL'),
+(2, 'DIOR');
 
 -- --------------------------------------------------------
 
@@ -66,6 +66,25 @@ CREATE TABLE `donhang` (
   `trangthai` enum('wait','paid','done','cancel') NOT NULL DEFAULT 'wait'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `donhang`
+--
+
+INSERT INTO `donhang` (`id`, `iddonhang`, `idmonhang`, `idnguoimua`, `trangthai`) VALUES
+(37, '24ec43ae-bffc-498b-b08a-2fb3083546e9', 2, 'admin@example.us', 'cancel'),
+(38, '7e875444-86e8-441a-81c3-171a97841571', 2, 'admin@example.us', 'cancel'),
+(39, '6b103810-1e19-4726-a635-9ccc513dbde3', 5, 'admin@example.us', 'cancel'),
+(40, '1f585c3f-71b2-4b86-811b-adc725b73621', 8, 'admin@example.us', 'cancel'),
+(41, 'b7149b43-4c64-45eb-95fd-952883b08681', 3, 'admin@example.us', 'cancel'),
+(42, '7d88694a-b71f-405e-94d6-27ca3ab9529b', 3, 'admin@example.us', 'cancel'),
+(43, '9a33bc82-c786-4ffd-9168-9bad247e0e3a', 3, 'admin@example.us', 'cancel'),
+(44, 'e0db3e2c-c570-4dcb-a3a0-460eeaee3ff9', 3, 'admin@example.us', 'cancel'),
+(45, '59f21aa8-a0d7-4b4d-8e77-ba5bc2ae21c2', 3, 'admin@example.us', 'cancel'),
+(46, '31c572bf-4d6c-445e-b9f5-bd616a13a7b2', 7, 'admin@example.us', 'cancel'),
+(47, '31c572bf-4d6c-445e-b9f5-bd616a13a7b2', 8, 'admin@example.us', 'cancel'),
+(48, 'fc6fe9db-84e7-42ab-ae2c-3247848cb8c0', 7, 'admin@example.us', 'wait'),
+(49, 'fc6fe9db-84e7-42ab-ae2c-3247848cb8c0', 8, 'admin@example.us', 'wait');
+
 -- --------------------------------------------------------
 
 --
@@ -91,9 +110,14 @@ CREATE TABLE `monhang` (
 --
 
 INSERT INTO `monhang` (`id`, `ten`, `gia`, `mota`, `hinhanh`, `dangky`, `thevocuc`, `soluong`, `nhom`, `createdAt`, `status`) VALUES
-(20, 'Acc freefire promax vip 123', 2000000.00, 'Acc vip, full skin, đã nạp 190 triệu', '[\"/src/imgs/7d2cdb85-837d-4abf-8d91-136918678d37.jpg\",\"/src/imgs/05ef689f-153a-48b7-9864-ba1e75541430.jpg\",\"/src/imgs/84cc5a52-61cb-4581-b122-c06f56a08cf6.jpg\"]', 1, 1, 1, 1, '2024-11-27 17:53:24', 0),
-(21, 'Acc lửa chùa miễn phí', 1.00, 'miễn phí cho bạn', '[\"/src/imgs/22574ab9-7581-4e58-97fa-4fa168964f54.jpg\"]', 2, 1, 1, 1, '2024-11-27 17:56:31', 0),
-(22, 'Free fire promax', 2000.00, 'acc mới tạo', '[\"/src/imgs/c6e0eee2-aa93-456f-ac55-d6013d7c7a57.jpg\"]', 1, 0, 1, 1, '2024-11-27 17:57:23', 0);
+(1, 'Son Đỏ Ruby', 250000.00, 'Son môi đỏ ruby bền màu, phù hợp đi tiệc', '[\"/src/imgs/1.jpg\", \"/src/imgs/2.jpg\", \"/src/imgs/3.jpg\", \"/src/imgs/4.jpg\", \"/src/imgs/5.jpg\", \"/src/imgs/6.jpg\", \"/src/imgs/7.jpg\", \"/src/imgs/8.jpg\"]', 1, 1, 100, 1, '2024-12-07 17:00:00', 0),
+(2, 'Son Hồng Baby', 220000.00, 'Son môi hồng baby dịu dàng, phù hợp hàng ngày', '[\"/src/imgs/2.jpg\", \"/src/imgs/3.jpg\", \"/src/imgs/4.jpg\", \"/src/imgs/5.jpg\", \"/src/imgs/6.jpg\", \"/src/imgs/7.jpg\", \"/src/imgs/8.jpg\", \"/src/imgs/1.jpg\"]', 1, 1, 150, 1, '2024-12-07 17:00:00', 0),
+(3, 'Son Cam Đào', 240000.00, 'Son môi cam đào trẻ trung, không gây khô môi', '[\"/src/imgs/3.jpg\", \"/src/imgs/4.jpg\", \"/src/imgs/5.jpg\", \"/src/imgs/6.jpg\", \"/src/imgs/7.jpg\", \"/src/imgs/8.jpg\", \"/src/imgs/1.jpg\", \"/src/imgs/2.jpg\"]', 1, 1, 120, 1, '2024-12-07 17:00:00', 0),
+(4, 'Son Đỏ Đậm', 280000.00, 'Son môi đỏ đậm quyến rũ, chất lì lâu trôi', '[\"/src/imgs/4.jpg\", \"/src/imgs/5.jpg\", \"/src/imgs/6.jpg\", \"/src/imgs/7.jpg\", \"/src/imgs/8.jpg\", \"/src/imgs/1.jpg\", \"/src/imgs/2.jpg\", \"/src/imgs/3.jpg\"]', 1, 1, 90, 1, '2024-12-07 17:00:00', 0),
+(5, 'Son Nâu Đất', 260000.00, 'Son môi nâu đất thời thượng, phù hợp nhiều phong cách', '[\"/src/imgs/5.jpg\", \"/src/imgs/6.jpg\", \"/src/imgs/7.jpg\", \"/src/imgs/8.jpg\", \"/src/imgs/1.jpg\", \"/src/imgs/2.jpg\", \"/src/imgs/3.jpg\", \"/src/imgs/4.jpg\"]', 1, 1, 110, 1, '2024-12-07 17:00:00', 0),
+(6, 'Son Hồng Đất', 270000.00, 'Son môi hồng đất nhẹ nhàng, lên màu chuẩn', '[\"/src/imgs/6.jpg\", \"/src/imgs/7.jpg\", \"/src/imgs/8.jpg\", \"/src/imgs/1.jpg\", \"/src/imgs/2.jpg\", \"/src/imgs/3.jpg\", \"/src/imgs/4.jpg\", \"/src/imgs/5.jpg\"]', 1, 1, 130, 1, '2024-12-07 17:00:00', 0),
+(7, 'Son Tím Mận', 290000.00, 'Son môi tím mận cá tính, nổi bật', '[\"/src/imgs/7.jpg\", \"/src/imgs/8.jpg\", \"/src/imgs/1.jpg\", \"/src/imgs/2.jpg\", \"/src/imgs/3.jpg\", \"/src/imgs/4.jpg\", \"/src/imgs/5.jpg\", \"/src/imgs/6.jpg\"]', 1, 1, 80, 1, '2024-12-07 17:00:00', 0),
+(8, 'Son Cam Cháy', 250000.00, 'Son môi cam cháy ấm áp, thích hợp mọi tông da', '[\"/src/imgs/8.jpg\", \"/src/imgs/1.jpg\", \"/src/imgs/2.jpg\", \"/src/imgs/3.jpg\", \"/src/imgs/4.jpg\", \"/src/imgs/5.jpg\", \"/src/imgs/6.jpg\", \"/src/imgs/7.jpg\"]', 1, 1, 140, 1, '2024-12-07 17:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -222,7 +246,7 @@ ALTER TABLE `danhgia`
 -- AUTO_INCREMENT cho bảng `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT cho bảng `monhang`
