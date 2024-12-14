@@ -31,7 +31,12 @@ const getListDangkyModel = async () => {
 
 const getListItemsModel = async () => {
     try {
-        const monhangs = await Monhang.findAll({ where: { status: 0 } });
+        const monhangs = await Monhang.findAll({ 
+            where: { 
+                status: 0,
+                soluong: { [Op.gt]: 0 } 
+            } 
+        });
         return monhangs.map(item => parseImageField(item));
     } catch (err) {
         console.error('Lỗi khi truy vấn:', err);
@@ -44,6 +49,7 @@ const getListItemsSearchModel = async (query) => {
         const monhangs = await Monhang.findAll({
             where: {
                 status: 0,
+                soluong: { [Op.gt]: 0 },
                 ten: {
                     [Op.like]: `%${query}%`
                 }
@@ -74,7 +80,10 @@ const getInfoItemModel = async (id) => {
 const getNewlyUpdatedItemsModel = async () => {
     try {
         const monhangs = await Monhang.findAll({
-            where: { status: 0 },
+            where: { 
+                status: 0,
+                soluong: { [Op.gt]: 0 }
+            },
             order: [['createdAt', 'DESC']],
             limit: 10
         });
@@ -90,6 +99,7 @@ const getGoodPriceItemsModel = async () => {
         const monhangs = await Monhang.findAll({
             where: {
                 status: 0,
+                soluong: { [Op.gt]: 0 },
                 gia: {
                     [Op.lt]: 1000000
                 }
@@ -107,6 +117,7 @@ const getVipItemsModel = async () => {
         const monhangs = await Monhang.findAll({
             where: {
                 status: 0,
+                soluong: { [Op.gt]: 0 },
                 thevocuc: true
             }
         });
@@ -120,7 +131,10 @@ const getVipItemsModel = async () => {
 const getHotItemsModel = async () => {
     try {
         const monhangs = await Monhang.findAll({
-            where: { status: 0 },
+            where: { 
+                status: 0,
+                soluong: { [Op.gt]: 0 }
+            },
             order: [['soluong', 'DESC']],
             limit: 10
         });
@@ -136,6 +150,7 @@ const getSaleItemsModel = async () => {
         const monhangs = await Monhang.findAll({
             where: {
                 status: 0,
+                soluong: { [Op.gt]: 0 },
                 dangky: {
                     [Op.gt]: 0
                 }

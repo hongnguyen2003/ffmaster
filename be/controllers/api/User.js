@@ -73,7 +73,7 @@ const banUser = async (req, res, next) => {
 
     try {
         const { username, status } = req.body;
-        const resu = await banUserModel(user);
+        const resu = await banUserModel(username, status);
         if (resu === null) return res.status(500).json({ message: "Error to update" });
         return res.status(200).json({ message: resu });
 

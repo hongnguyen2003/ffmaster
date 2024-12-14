@@ -85,12 +85,19 @@ const deleteOrderModel = async (id) => {
 const doneOrderModel = async (id) => {
     try {
         const result = await Donhang.update({ trangthai: 'done' }, { where: { iddonhang: id } });
+
+        if (result[0] > 0) {
+            const orders = await Donhang.findAll({ where: { iddonhang: id } });
+            for (const order of orders) {
+                await Monhang.update({ soluong: 0 }, { where: { id: order.idmonhang } });
+            }
+        }
+
         return result;
     } catch (err) {
         console.error('Error updating order:', err);
         return null;
     }
-
 }
 
 export { createOrderModel, updateOrderModel, deleteOrderModel, getListOrderModel, doneOrderModel };
