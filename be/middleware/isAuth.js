@@ -1,5 +1,6 @@
 import { verifyToken } from '../utils/jwt.js';
 import dotenv from 'dotenv';
+import { User } from '@config/sequelize.config.js';
 dotenv.config();
 
 const isAuth = async (req, res, next) => {
@@ -23,6 +24,11 @@ const isAuth = async (req, res, next) => {
 
     if (!user || decoded.username !== user.username) {
         return res.status(403).json({ message: "No auth" });
+    }
+
+    const dbUser = await User.findOne({ where: { username: user.username } });
+    if (dbUser && dbUser.status !== 0) {
+        return res.status(403).json({ message: "User is banned" });
     }
 
     next();

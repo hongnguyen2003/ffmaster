@@ -103,6 +103,11 @@ const User = sequelize.define('User', {
         allowNull: false,
         defaultValue: 'USERS',
     },
+    status: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: 0,
+    },
 }, {
     tableName: 'users',
     timestamps: false,

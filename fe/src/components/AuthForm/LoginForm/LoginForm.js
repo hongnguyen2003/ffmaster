@@ -31,6 +31,9 @@ export default function LoginForm({ setFormType, onClose, className, ...props })
             });
             if (fetchData.ok) {
                 const decoded = await fetchData.json();
+                if (decoded.message==='User is banned') {
+                    return alert('Tài khoản của bạn đã bị khóa');
+                }
                 const { refresh_token, access_token, ...data } = decoded;
                 localStorage.setItem('refresh_token', refresh_token);
                 dispatch(changeUserInfo(data))
