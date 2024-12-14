@@ -4,12 +4,16 @@ import bcrypt from 'bcrypt';
 const loginUserModel = async (username, password) => {
     try {
         const user = await User.findOne({ where: { username } });
-        if (user && await bcrypt.compare(password, user.password)) {
-            const { password, ...userWithoutPassword } = user.toJSON();
-            return userWithoutPassword;
-        } else {
-            return null;
+        if (user) {
+            if (user.status !== 0) {
+                return { message: "User is banned" };
+            }
+            if (await bcrypt.compare(password, user.password)) {
+                const { password, ...userWithoutPassword } = user.toJSON();
+                return userWithoutPassword;
+            }
         }
+        return null;
     } catch (err) {
         console.error('Lỗi khi truy vấn:', err);
         return null;
