@@ -88,6 +88,19 @@ $(document).ready(function () {
             id: id
         };
 
+        // Ensure all required fields are filled
+        if (!user.ten || !user.gia || !user.mota || !user.dangky || IMGARR.length === 0) {
+            alert('Vui lòng điền đầy đủ thông tin.');
+            return;
+        }
+
+        // Ensure gia is a positive integer greater than 0
+        const giaRegex = /^[1-9]\d*$/;
+        if (!giaRegex.test(user.gia)) {
+            alert('Giá phải là số nguyên dương lớn hơn 0.');
+            return;
+        }
+
         const url = mode === 'new' ? '/api/createItem' : '/api/updateItem';
         const method = mode === 'new' ? 'POST' : 'PUT';
         const response = await fetch(url, {
