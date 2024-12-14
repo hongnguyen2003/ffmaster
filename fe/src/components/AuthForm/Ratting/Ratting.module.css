@@ -1,0 +1,33 @@
+.container {
+	.info {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		.btnGr {
+			.close {
+				color: black;
+				background-color: white;
+				&:hover {
+					color: white;
+					background-color: #e81123;
+				}
+			}
+			.login {
+				width: 100%;
+			}
+			display: flex;
+			width: 100%;
+			justify-content: center;
+			align-items: stretch;
+		}
+	}
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	color: white;
+	justify-content: space-between;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem 2rem;
+	background-color: #5c5c5c;
+}

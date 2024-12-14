@@ -1,4 +1,18 @@
-import { getListGroupsModel, getListItemsModel, getInfoItemModel, getNewlyUpdatedItemsModel, getGoodPriceItemsModel, getVipItemsModel, getHotItemsModel, getSaleItemsModel, createItemModel, updateItemModel, deleteItemModel } from "@models/item.model.js";
+import { getListGroupsModel, getListItemsModel, getListItemsSearchModel, getInfoItemModel, getNewlyUpdatedItemsModel, getGoodPriceItemsModel, getVipItemsModel, getHotItemsModel, getSaleItemsModel, createItemModel, updateItemModel, deleteItemModel } from "@models/item.model.js";
+
+export const getListItemsSearch = async (req, res, next) => {
+    try {
+        const { query } = req.query;
+        const items = await getListItemsSearchModel(query);
+        if (items === null) return res.status(500).json({ message: "Error to get" });
+        return res.status(200).json(items);
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "", ...error });
+    }
+}
+
 
 export const getItemDetail = async (req, res, next) => {
     try {

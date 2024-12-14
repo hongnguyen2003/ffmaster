@@ -13,10 +13,11 @@ import Button from 'components/mini.components/Button';
 import classNames from 'classnames/bind';
 import InputBar from 'components/mini.components/InputBar';
 import { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 const cx = classNames.bind(style);
 
 export default function Search() {
-
+    const navigator = useNavigate();
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === 'Escape') {
@@ -30,9 +31,14 @@ export default function Search() {
             // }
         };
         document.addEventListener('keydown', handleKeyDown);
-
+        document.addEventListener('keydown', (e) => e.key === 'Enter' && handleSearch);
 
     }, []);
+
+    const handleSearch = () => {
+        const searchValue = refSearchInput.current.value;
+        navigator(`/search/${searchValue}`);
+     };
 
     const refSearchBtn = useRef(null);
     const refSearchInput = useRef(null);
@@ -47,7 +53,7 @@ export default function Search() {
                         }
                     }
                 }} ref={refSearchInput} />
-            <Button left variab='fill' type="submit" icon={faSearch} ref={refSearchBtn}></Button>
+            <Button left variab='fill' type="submit" icon={faSearch} ref={refSearchBtn} onClick={handleSearch}></Button>
         </div>
     )
 }

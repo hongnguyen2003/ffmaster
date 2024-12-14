@@ -9,6 +9,7 @@ import ImageFallBack from 'components/mini.components/ImageFallBack';
 import formatCurrency from 'utils/formatCurrency';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../../redux/slices/cartSlice';
+import { changeCartType, turnCart } from '../../redux/slices/cartSlice';
 import { selectCartItems } from '../../redux/selectors/cartSelectors';
 const cx = classNames.bind(style);
 
@@ -29,7 +30,8 @@ const ItemGame = forwardRef(({ className, data, ...props }, ref) => {
     const itemExists = cartItems.some(item => item.id === data.id);
     const handleAddCart = () => {
         if (itemExists) {
-            alert('Item already in cart');
+            dispatch(changeCartType('CART'));
+            dispatch(turnCart());
         } else {
             dispatch(addItem(data));
         }

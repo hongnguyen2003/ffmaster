@@ -38,7 +38,9 @@ export default function OrderItem({ item, setCartType, className, onDelete, ...p
         if (!response.ok) return alert('Lỗi khi hoàn thành đơn hàng, vui lòng reload lại trang và thử lại');
         onDelete();
 
-        return alert('Đơn hàng đã thành công');
+         alert('Đơn hàng đã thành công');
+        dispatch(changeFormType("RATTING"));
+        return dispatch(turnForm());
 
     }
 

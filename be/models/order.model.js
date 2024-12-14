@@ -25,7 +25,10 @@ const createOrderModel = async (cartItems, username) => {
 const getListOrderModel = async (username, isAdmin) => {
     try {
         const query = isAdmin ? {} : { where: { idnguoimua: username } };
-        const orders = await Donhang.findAll(query);
+        const orders = await Donhang.findAll({
+            ...query,
+            order: [['createdAt', 'DESC']] // Add this line to sort by creation date in descending order
+        });
         if (orders.length === 0) return null;
 
         const orderData = orders.map(order => order.toJSON());

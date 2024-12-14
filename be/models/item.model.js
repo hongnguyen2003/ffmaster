@@ -39,6 +39,23 @@ const getListItemsModel = async () => {
     }
 };
 
+const getListItemsSearchModel = async (query) => {
+    try {
+        const monhangs = await Monhang.findAll({
+            where: {
+                status: 0,
+                ten: {
+                    [Op.like]: `%${query}%`
+                }
+            }
+        });
+        return monhangs.map(item => parseImageField(item));
+    } catch (err) {
+        console.error('Lỗi khi truy vấn:', err);
+        return null;
+    }
+};
+
 const getInfoItemModel = async (id) => {
     try {
         const monhang = await Monhang.findOne({
@@ -149,7 +166,7 @@ const deleteItemModel = async (id) => {
             where: { id: id }
         });
         console.log(monhang);
-        
+
         return monhang;
     } catch (err) {
         console.error('Lỗi khi xóa:', err);
@@ -168,4 +185,4 @@ const createItemModel = async (itemData) => {
     }
 };
 
-export { getListDangkyModel, getListGroupsModel, getListItemsModel, getInfoItemModel, getNewlyUpdatedItemsModel, getGoodPriceItemsModel, getVipItemsModel, getHotItemsModel, getSaleItemsModel, createItemModel, updateItemModel, deleteItemModel };
+export { getListItemsSearchModel, getListDangkyModel, getListGroupsModel, getListItemsModel, getInfoItemModel, getNewlyUpdatedItemsModel, getGoodPriceItemsModel, getVipItemsModel, getHotItemsModel, getSaleItemsModel, createItemModel, updateItemModel, deleteItemModel };

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import ImageFallBack from 'components/mini.components/ImageFallBack';
 import Button from 'components/mini.components/Button';
 import { faCartPlus, faMoneyBillWave, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
-import { useEffect } from 'react';
+import { changeCartType, turnCart } from '../../redux/slices/cartSlice';
 import { addItem } from '../../redux/slices/cartSlice';
 import { selectCartItems } from '../../redux/selectors/cartSelectors';
 import { useDispatch, useSelector } from 'react-redux';
@@ -36,7 +36,7 @@ export default function InfoItemGame({ className, dataInfo, ...props }) {
         ),
         customPaging: function (i) {
             return <div className={cx('dot')}>
-                <ImageFallBack src={'http://localhost:8080' +dataInfo.hinhanh[i]} />
+                <ImageFallBack src={'http://localhost:8080' + dataInfo.hinhanh[i]} />
             </div>;
         },
         dotsClass: cx('slick-custom'),
@@ -54,11 +54,25 @@ export default function InfoItemGame({ className, dataInfo, ...props }) {
 
     const handleAddCart = () => {
         if (itemExists) {
-            alert('Item already in cart');
+            dispatch(changeCartType('CART'));
+            dispatch(turnCart());
             return;
         }
         dispatch(addItem(dataInfo));
     };
+
+
+    const handleBuy = () => {
+        if (itemExists) {
+            dispatch(changeCartType('CART'));
+            dispatch(turnCart());
+            return;
+        }
+        dispatch(addItem(dataInfo));
+        dispatch(changeCartType('CART'));
+        dispatch(turnCart());
+    }
+
     if (!dataInfo) return null;
     return (
         <div className={cx('infoAccount')}>
@@ -66,7 +80,7 @@ export default function InfoItemGame({ className, dataInfo, ...props }) {
                 <Slider className={cx('sliderContaier')} {...settings}>
                     {dataInfo.hinhanh.map((item, index) => (
                         <div key={index} className={classes}>
-                            <ImageFallBack src={'http://localhost:8080' +item} alt={dataInfo.ten} />
+                            <ImageFallBack src={'http://localhost:8080' + item} alt={dataInfo.ten} />
                         </div>
                     ))}
                 </Slider>
@@ -84,7 +98,7 @@ export default function InfoItemGame({ className, dataInfo, ...props }) {
                 </div>
                 <div className={cx('row')}>
                     <Button className={cx('addtocart', itemExists && 'added')} onClick={handleAddCart} right={true} icon={itemExists ? faCartArrowDown : faCartPlus} ></Button>
-                    <Button className={cx('pay')} right={true} icon={faMoneyBillWave}>Mua ngay</Button>
+                    <Button className={cx('pay')} right={true} icon={faMoneyBillWave} onClick={handleBuy}>Mua ngay</Button>
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@ import style from './Home.module.css';
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { sampleDataBanner } from 'data/home';
+import InfoWebCatalog from 'components/InfoWebCatalog';
 const cx = classNames.bind(style);
 
 export default function Home() {
@@ -56,6 +57,7 @@ export default function Home() {
                 <Banner data={sampleDataBanner} />
                 <div className={cx('mini-container')}>
                     <NewUpdateCatalog sampleData={dataNewlyUpdated} tagCatalog='new' />
+                    <InfoWebCatalog />
                     <NewUpdateCatalog type sampleData={dataGoodPrice} tagCatalog='goodprice' />
                     <CatalogItem nameCatalog='Tài khoản VIP' tagCatalog='vip' sampleData={dataVip} id="moreinfo" />
                     <CatalogItem nameCatalog='Tài khoản HOT' tagCatalog='hot' sampleData={dataHot} />

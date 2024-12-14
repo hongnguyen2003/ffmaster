@@ -1,4 +1,4 @@
-import { getItemDetail, getListItems, getListGroups, getNewlyUpdatedItems, getGoodPriceItems, getVipItems, getHotItems, getSaleItems, createItem, updateItem, deleteItem } from '../../controllers/api/Item.js';
+import { getItemDetail, getListItems, getListGroups, getNewlyUpdatedItems, getGoodPriceItems, getVipItems, getHotItems, getSaleItems, createItem, updateItem, deleteItem, getListItemsSearch } from '../../controllers/api/Item.js';
 import isAdmin from '../../middleware/isAdmin.js';
 import isAuth from '../../middleware/isAuth.js';
 const ItemAPI = (router) => {
@@ -11,6 +11,7 @@ const ItemAPI = (router) => {
     router.get('/getVipItems', getVipItems);
     router.get('/getHotItems', getHotItems);
     router.get('/getSaleItems', getSaleItems);
+    router.get('/search', getListItemsSearch);
 
     router.post('/createItem', isAuth, isAdmin, createItem);
     router.put('/updateItem', isAuth, isAdmin, updateItem);
